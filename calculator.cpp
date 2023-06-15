@@ -1,6 +1,3 @@
-// Adding new code
-
-
 #include <iostream>
 using namespace std;
 
