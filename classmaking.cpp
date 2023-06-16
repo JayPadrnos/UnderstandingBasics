@@ -21,6 +21,10 @@ class Character {
             defense = characterDefense;   
         }
 
+        int getCurrentHealth() const {
+            return currenthealth;
+        }
+        
         void attack(Character& attacker, Character& defender) {
             int damage = attacker.strength - defender.defense;
             if (damage > 0) {
@@ -49,7 +53,7 @@ int main() {
 
         switch (choice) {
             case 1:
-                player.attack(enemy);
+                player.attack(player, enemy);
                 break;
             case 2:
                 cout << "Player takes a defensive stance. \n";
@@ -66,17 +70,18 @@ int main() {
             enemy.attack(enemy, player);
         }
 
-        if (player.currenthealth <= 0 || enemy.currenthealth <= 0) {
+        if (player.getCurrentHealth() <= 0 || enemy.getCurrentHealth() <= 0) {
             isBattleOver = true;
-            if (player.currenthealth <= 0)
+            if (player.getCurrentHealth() <= 0) {
                 cout << "Player has been defeated. Game Over! \n";
 
-                else
+         } else {
                 cout << "Enemy has been defeated. You Win! \n";
+           }
         }
 
         isPlayerTurn = !isPlayerTurn;
-    }
+        }
 
     return 0;
 
