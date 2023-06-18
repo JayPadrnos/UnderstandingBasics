@@ -24,7 +24,7 @@ class Character {
         int getCurrentHealth() const {
             return currenthealth;
         }
-        
+
         void attack(Character& attacker, Character& defender) {
             int damage = attacker.strength - defender.defense;
             if (damage > 0) {
@@ -84,5 +84,6 @@ int main() {
         }
 
     return 0;
+
 
 }
