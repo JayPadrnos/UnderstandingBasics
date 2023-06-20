@@ -1,17 +1,18 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <wn.h>
-
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+extern "C" {
+    #include <wn.h>
+}
 int main() {
     // Initialize WordNet
     if (!wninit()) {
-        fprintf(stderr, "UNable to initialize WordNet\n");
+        std::cerr << "Unable to initialize WordNet" << std::endl;
         return 1;
     }
 
     // Seed the random number generator
-    srand(time(NULL));
+    srand(time(nullptr));
 
     // Generate and display 10 random words with definitions
     for (int i = 0; i < 10; ++i) {
@@ -20,20 +21,21 @@ int main() {
         // Generate random word
         char word[32];
         snprintf(word, sizeof(word), "n%05d", random_sense); // 'n' indicates noun synset
-        
-        // Retrive synset for the word
-        int synset_index = wngetindex(word);
-        SynsetPtr synset = wngetsynset(syneset_index);
+
+        // Retrieve synset for the word
+        int synset_index = GetWORD(word); // Frustration at its finest
+        SynsetPtr synset = GetSynsetForSense(synset_index); // losing my mind here
 
         if (synset) {
-            printf("Word: %s\n", word);
-            printf("Definition: %s\n", synset>defn);
+            std::cout << "Word: " << word << std::endl;
+            std::cout << "Definition: " << synset->defn << std::endl;
         } else {
-            printf("Definition not found for word: %s\n", word);
+            std::cout << "Definition not found for word: " << word << std::endl;
         }
-        printf("\n");
+        std::cout << std::endl;
     }
+    // Close WordNet
+    wnclose(); // and why the hell does this one not work?!?
 
-    // Close wordnet
-    wnclose();
+    return 0;
 }
