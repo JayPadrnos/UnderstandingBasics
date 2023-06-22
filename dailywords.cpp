@@ -1,41 +1,36 @@
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
-extern "C" {
-    #include <wn.h>
-}
+#include <vector>
+#include <random>
+#include "wordnet_wrapper.hpp"
+
 int main() {
-    // Initialize WordNet
-    if (!wninit()) {
-        std::cerr << "Unable to initialize WordNet" << std::endl;
+    // Initialize Wordnet
+    int result = initialize_wordnet();
+    if (result != 0) {
+        std::cerr << "Failed to initialize Wordnet" << std::endl;
         return 1;
     }
+    
+    // Create a vector to store random words and definitions
+    std::vector<std::string> randomWords;
 
-    // Seed the random number generator
-    srand(time(nullptr));
-
-    // Generate and display 10 random words with definitions
+    // Retrieve 10 random words and their definition
     for (int i = 0; i < 10; ++i) {
-        int random_sense = rand() % 100 + 1; // Generates random sense number
+        const char* randomWord = get_random_word();
+        const char* definition = get_word_definition(randomWord);
+        randomWords.push_back(randomWord);
+        randomWords.push_back(definition);
+    }
 
-        // Generate random word
-        char word[32];
-        snprintf(word, sizeof(word), "n%05d", random_sense); // 'n' indicates noun synset
-
-        // Retrieve synset for the word
-        int synset_index = GetWORD(word); // Frustration at its finest
-        SynsetPtr synset = GetSynsetForSense(synset_index); // losing my mind here
-
-        if (synset) {
-            std::cout << "Word: " << word << std::endl;
-            std::cout << "Definition: " << synset->defn << std::endl;
-        } else {
-            std::cout << "Definition not found for word: " << word << std::endl;
-        }
+    // Display the random words and their definition
+    for (size_t i = 0; i < randomWords.size(); i += 2) {
+        std::cout << "Word: " << randomWords[i] << std::endl;
+        std::cout << "Definition: " << randomWords[i + 1] << std::endl;
         std::cout << std::endl;
     }
-    // Close WordNet
-    wnclose(); // and why the hell does this one not work?!?
+
+    // Cleanup Wordnet
+    cleanup_wordnet();
 
     return 0;
 }
