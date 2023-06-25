@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <algorithm>
 using namespace std;
 
 // Define a room class to represent each location in the game world.
@@ -45,9 +46,9 @@ class Game {
             room3.AddExit("west", 1);
 
             // Add rooms to the game world
-            room.push_back(room1);
-            room.push_back(room2);
-            room.push_back(room3);
+            rooms.push_back(room1);
+            rooms.push_back(room2);
+            rooms.push_back(room3);
         }
 
         void RunGame() {
@@ -56,13 +57,13 @@ class Game {
 
             while(true) {
                 // Print the current room description
-                const Room& currentRoomObj = room[currentRoom];
+                const Room& currentRoomObj = rooms[currentRoom];
                 cout << currentRoomObj.description << "\n\n";
 
                 // Check if there are any items in the room
-                if (!currentRoomObj.item.empty()) {
+                if (!currentRoomObj.items.empty()) {
                     cout << "You see the following items in the room: ";
-                    for (const string& item : currentRoomObj.item) {
+                    for (const string& item : currentRoomObj.items) {
                         cout << item << " ";
                     }
                     cout << "\n";
@@ -86,7 +87,7 @@ class Game {
                     // Handle movement commands
                     string direction = command.substr(3);
                     if (currentRoomObj.exits.count(direction) > 0) {
-                        currentRoom = currentRoomObj.exits[direction];
+                        currentRoom = rooms[currentRoom].exits[direction];
                     }
                     else {
                         cout << "You cannot go that way. \n";
@@ -95,13 +96,13 @@ class Game {
                 else if (command.find("take ") == 0) {
                     // Handle item pickup commands
                     string item = command.substr(5);
-                    if (currentRoomObj.item.empty() || find(currentRoomObj.items.begin(), currentRoomObj.item.end(), item) == currentRoomObj.item.end()) {
+                    if (currentRoomObj.items.empty() || find(currentRoomObj.items.begin(), currentRoomObj.items.end(), item) == currentRoomObj.items.end()) {
                         cout << "There is no " << item << "in the room. \n";
                     }
                     else {
                         cout << "YOUtake the " << item << "in the room. \n";
                         // Remove the item from the room
-                        currentRoomObj.item.erase(remove(currentRoomObj.items.begin(), currentRoomObj.item.end(), item), currentRoomObj.item.end());
+                        rooms[currentRoom].items.erase(remove(rooms[currentRoom].items.begin(), rooms[currentRoom].items.end(), item), rooms[currentRoom].items.end());
                     }
                 }
                 else {
