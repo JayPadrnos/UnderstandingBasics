@@ -100,7 +100,7 @@ class Game {
                         cout << "There is no " << item << "in the room. \n";
                     }
                     else {
-                        cout << "YOUtake the " << item << "in the room. \n";
+                        cout << "You take the " << item << "in the room. \n";
                         // Remove the item from the room
                         rooms[currentRoom].items.erase(remove(rooms[currentRoom].items.begin(), rooms[currentRoom].items.end(), item), rooms[currentRoom].items.end());
                     }
