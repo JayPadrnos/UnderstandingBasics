@@ -21,6 +21,17 @@ map<string, double> rankList = {
     {"S+", 5.3},
 };
 
+double playerChoice() {
+
+    double choice;
+
+    cout << "What it students score?: ";
+    cin >> choice;
+
+    return choice;
+
+};
+
 string calculateGrade(double score) {
     for (const auto& rank : rankList) {
         if (score >= rank.second) {
@@ -30,8 +41,9 @@ string calculateGrade(double score) {
     return "Unkown";
 }
 
+
 int main() {
-    double studentScore= 3.2;
+    double studentScore= playerChoice();
     string studentGrade = calculateGrade(studentScore);
     cout << "The students grade is: " << studentGrade << endl;
     return 0;
