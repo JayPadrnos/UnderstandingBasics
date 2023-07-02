@@ -24,7 +24,7 @@ int main()
     };
 
     int numFrames = sizeof(spaceshipFrames) / sizeof(spaceshipFrames[0]);
-
+//
     while (true) {
         for (int i = 0; i < screenWidth; i++) {
             clearScreen();
