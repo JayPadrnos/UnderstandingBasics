@@ -46,6 +46,31 @@ void initializeRooms() {
     room2.hasEnemy = true;
     rooms.push_back(room2);
 
+    Room room3;
+    room3.description = "You have entered a large dome like room, you can see two large doors on the other sides of the room.";
+    room3.exits = {2, 4, 5}; // Room 3 connects to room 2, 4, and 5
+    room3.items = {2}; // Room 3 has 1 item with ID 2
+    room3.hasEnemy = false;
+    rooms.push_back(room3);
+
+    Room room4;
+    room4.exits = {3};
+    room4.items = {3, 4};
+    room4.hasEnemy = true;
+    rooms.push_back(room4);
+
+    Room room5;
+    room5.exits = {3, 6};
+    room5.items = {};
+    room5.hasEnemy = false;
+    rooms.push_back(room5);
+
+    Room room6;
+    room6.exits = {5};
+    room6.items = {5};
+    room6.hasEnemy = true;
+    rooms.push_back(room6);
+
     // Add rooms 3 4 and 5 have room 3 go to room 2 4 and 5
 }
 
@@ -57,7 +82,34 @@ void initializeItems() {
     item1.description = "A sharp sword.";
     items.push_back(item1);
 
-    // Add wood and metal armor along with a club and sheild
+    Item item2;
+    item2.id = 2;
+    item2.name = "Schimitar";
+    item2.description = "A broad curved blade";
+    items.push_back(item2);
+
+    Item item3;
+    item3.id = 3;
+    item3.name = "Wood Armor";
+    item3.description = "Simple wooden armor";
+    items.push_back(item3);
+
+    Item item4;
+    item4.id = 4;
+    item4.name = "Rusty Key";
+    item4.description = "A key for a a door, the key looks to be rusted.";
+    items.push_back(item4);
+
+    Item item5;
+    item5.id = 5;
+    item5.name = "Metal Armor";
+    item5.description = "Heavy Armor made from scrap metals";
+    items.push_back(item5);
+
+    // Add more rooms so that you can add more items and creatures.
+    /// Make locks capable to be unlocked by keys so that the "Rusty Key" and other key items can unlock doors.
+    //// Find a way that the player can be awarded these items after fighting the enemies vs just finding them for entering the room.
+    
 }
 
 // Initialize enemies
@@ -68,6 +120,20 @@ void initializeEnemies() {
     enemy1.defense = 5;
     enemy1.health = 20;
     enemies.push_back(enemy1);
+
+    Enemy enemy2;
+    enemy2.name = "Zombie";
+    enemy2.attack = 20;
+    enemy2.defense = 10;
+    enemy2.health = 30;
+    enemies.push_back(enemy2);
+
+    Enemy enemy3;
+    enemy3.name = "Vampire";
+    enemy3.attack = 15;
+    enemy3.defense = 5;
+    enemy3.health = 50;
+    enemies.push_back(enemy3);
 
     // add an enemy for rooms 4 and 5 say a zombie and vampire
 }
@@ -93,6 +159,9 @@ void movePlayer(int direction) {
             cout << "An enemy has appeared";
             // Handle enemy encounter logic
             //.....
+            bool suprise;
+            if (suprise = true) {
+                    /////////// Find if correct for a bool to get a suprised bonuse for player attack, the effect should be stated after the enemies description.
         }
     } else {
         cout << "Cannot go in that direction";
