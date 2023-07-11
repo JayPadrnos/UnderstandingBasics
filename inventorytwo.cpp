@@ -4,6 +4,10 @@
 
 using namespace std;
 
+//! Things to do:
+    // Add more comments to each function. I had trouble understand what each function / method did
+    // Move the functions inside the classes. See line 34 - 39 as well
+
 struct Item {
     int id;
     string name;
@@ -26,11 +30,15 @@ class Backpack {
     void removeItem(int itemId);
     void displayInventory();
     Item* getItem(int itemId);
+
+    void addItem(const Item& item) {
+        items.push_back(item);
+    }
 };
 
-void Backpack::addItem(const Item& item) {
-    items.push_back(item);
-}
+// void Backpack::addItem(const Item& item) {
+//     items.push_back(item);
+// }
 
 void Backpack::removeItem(int itemId) {
     for (auto it = items.begin(); it != items.end(); ++it) {
@@ -151,7 +159,7 @@ void Character::fight(Character& enemy) {
 
 int main() {
     Character player;
-    Character enemey;
+    Character enemy;
 
     Item sword;
     sword.id = 1;
@@ -181,17 +189,17 @@ int main() {
     woodenArmor.description = "Basic Wooden Armor";
     woodenArmor.quantity = 1;
 
-    enemey.setStats(30, 2, 5);
-    enemey.addItemToBackpack(woodenArmor);
+    enemy.setStats(30, 2, 5);
+    enemy.addItemToBackpack(woodenArmor);
 
     player.displayInventory();
-    enemey.displayInventory();
+    enemy.displayInventory();
 
     player.equipItem(1);
     player.equipItem(2);
     player.equipItem(3);
 
-    player.fight(enemey);
+    player.fight(enemy);
 
     return 0;
 }

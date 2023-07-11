@@ -5,8 +5,8 @@ class Character {
     private:
         string name;
         int age;
-        int currenthealth;
-        int maxhealth;
+        int current_health;
+        int max_health;
         int strength;
         int dexterity;
         int defense;
@@ -14,24 +14,24 @@ class Character {
         Character(const string& characterName, int characterAge, int characterCurrentHP, int characterMaxHP, int characterStrength, int characterDexterity, int characterDefense) {
             name = characterName;
             age = characterAge;
-            currenthealth = characterCurrentHP;
-            maxhealth = characterMaxHP;
+            current_health = characterCurrentHP;
+            max_health = characterMaxHP;
             strength = characterStrength;
             dexterity = characterDexterity;
             defense = characterDefense;   
         }
 
         int getCurrentHealth() const {
-            return currenthealth;
+            return current_health;
         }
 
         void attack(Character& attacker, Character& defender) {
             int damage = attacker.strength - defender.defense;
             if (damage > 0) {
-                defender.currenthealth -= damage;
+                defender.current_health -= damage;
             }
             cout << name << "Swings their sword at the beast.\n\n";
-            cout << defender.name << " has " << defender.currenthealth << "/" << defender.maxhealth << "HP after that hit. \n\n";
+            cout << defender.name << " has " << defender.current_health << "/" << defender.max_health << "HP after that hit. \n\n";
         }
 };
 

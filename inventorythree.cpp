@@ -108,7 +108,10 @@ void initializeItems() {
 
     // Add more rooms so that you can add more items and creatures.
     /// Make locks capable to be unlocked by keys so that the "Rusty Key" and other key items can unlock doors.
-    //// Find a way that the player can be awarded these items after fighting the enemies vs just finding them for entering the room.
+    // Find a way that the player can be awarded these items after fighting the enemies vs just finding them for entering the room.
+    //? is Jay gay?
+    //!5 Yes he is!
+    //
     
 }
 
@@ -136,6 +139,7 @@ void initializeEnemies() {
     enemies.push_back(enemy3);
 
     // Figure out how to put the enemies in the specific room
+    //! You would have a 'room' property assigned to an enemy when you instatiate the enemy. This way two different 'zombie's can exist in multiple rooms
 }
 
 // Initialize the game world
@@ -161,7 +165,7 @@ void movePlayer(int direction) {
             //.....
             bool suprise;
             if (suprise = true) {
-                    /////////// Find if correct for a bool to get a suprised bonuse for player attack, the effect should be stated after the enemies description.
+                    // Find if correct for a bool to get a suprised bonuse for player attack, the effect should be stated after the enemies description.
         }
     } else {
         cout << "Cannot go in that direction";

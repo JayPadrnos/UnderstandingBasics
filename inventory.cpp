@@ -37,10 +37,12 @@ void Backpack::addItem(const Item& item) {
     // Add the item to the backpack
     items[itemCount++] = item;
 }
+
 void Backpack::removeItem(int itemId) {
     // Search for the item in the backpack
     for (int i = 0; i < itemCount; ++i) {
         if (items[i].id == itemId) {
+
             // Remove the item by shifting the remaining items
             for (int j = i; j < itemCount - 1; ++j) {
                 items[j] = items[j + 1];
@@ -81,6 +83,8 @@ int main() {
     item2.description = "Restore health.";
     item2.quantity = 5;
     backpack.addItem(item2);
+
+    // Initialize the items and all the classes in a separate function
 
     backpack.displayInventory();
 
