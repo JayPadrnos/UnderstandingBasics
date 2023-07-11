@@ -135,7 +135,7 @@ void initializeEnemies() {
     enemy3.health = 50;
     enemies.push_back(enemy3);
 
-    // add an enemy for rooms 4 and 5 say a zombie and vampire
+    // Figure out how to put the enemies in the specific room
 }
 
 // Initialize the game world
@@ -165,8 +165,10 @@ void movePlayer(int direction) {
         }
     } else {
         cout << "Cannot go in that direction";
+        }
     }
 }
+
 
 // Function to handle picking up an item
 void pickUpItem(int itemId) {
