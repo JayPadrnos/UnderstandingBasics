@@ -10,12 +10,20 @@ struct Room {
     vector<int> exits;
     vector<int> items;
     bool hasEnemy;
+    bool hasLever;
 };
 
 struct Item {
     int id;
     string name;
     string description;
+};
+
+struct Player {
+    string name;
+    string playerClass;
+    string description;
+
 };
 
 struct Enemy {
@@ -71,7 +79,10 @@ void initializeRooms() {
     room6.hasEnemy = true;
     rooms.push_back(room6);
 
-    // Add rooms 3 4 and 5 have room 3 go to room 2 4 and 5
+    //! Fix how the rooms are traversed they need spaces in the cout at the end on top of needing options that are not 0 - 3 need a way to better choose options in the rooms once the description of room is told to user
+    // Be sure you can traverse the rooms, See what is in the room, then decide on what to do based off of what the player sees
+    // Make a perception check for the players stat so that they may not be able to choose or even see options for rooms based off the check
+    // Have a lever in room 1 that needs a key or a piece of the lever so that it opens room7 leading to a "Boss" fight
 }
 
 // Initialize items
@@ -108,11 +119,10 @@ void initializeItems() {
 
     // Add more rooms so that you can add more items and creatures.
     /// Make locks capable to be unlocked by keys so that the "Rusty Key" and other key items can unlock doors.
-    // Find a way that the player can be awarded these items after fighting the enemies vs just finding them for entering the room.
-    //? is Jay gay?
-    //!5 Yes he is!
-    //
-    
+    // Find a way that the player can be awarded these items after fighting the enemies vs just finding them for entering the room. 
+
+
+
 }
 
 // Initialize enemies
@@ -138,8 +148,9 @@ void initializeEnemies() {
     enemy3.health = 50;
     enemies.push_back(enemy3);
 
+    // Have a "Boss" that can have multiple phases of the fight
     // Figure out how to put the enemies in the specific room
-    //! You would have a 'room' property assigned to an enemy when you instatiate the enemy. This way two different 'zombie's can exist in multiple rooms
+    // Allow for multiple enemies in the same room
 }
 
 // Initialize the game world
