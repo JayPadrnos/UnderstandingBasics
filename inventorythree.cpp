@@ -17,13 +17,19 @@ struct Item {
     int id;
     string name;
     string description;
+    int attackBonus;
+    int defenseBonus;
+    int healthBonus;
+
+    // More properties for the Items can be made here
 };
 
 struct Player {
     string name;
-    string playerClass;
-    string description;
-
+    int health;
+    int attack;
+    int defense;
+    vector<int> inventory;
 };
 
 struct Enemy {
@@ -37,6 +43,15 @@ struct Enemy {
 vector<Room> rooms;
 vector<Item> items;
 vector<Enemy> enemies;
+
+// Function prototypes
+void initializeGameWorld();
+void movePlayer(int direction);
+void pickUpItem(int itemId);
+void useItem(int itemId);
+void displayGameWorld();
+int getPlayerInput();
+void playGame();
 
 // Initialize rooms
 void initializeRooms() {
@@ -232,6 +247,21 @@ int getPlayerInput() {
     return input;
 }
 
+// Function to perform combat between player and enemy
+void performCombat(Player& player, Enemy& enemy) {
+    // Calculate player's attack and defense values, considering weapon stats
+    int playerAttack = player.attack + player.equippedWeapon.attackBonus;
+    int playerDefense = player.defense + player.equippedArmor.defenseBonus;
+
+    // Calculate enemy's attack and defense value
+    int enemyAttack = enemy.attack;
+    int enemyDefense = enemy.defense;
+
+    // Perform combat calculations using the modified attack and defense values
+    // ......
+
+}
+
 // Game loop
 void playGame() {
     bool gameOver = false;
@@ -259,6 +289,15 @@ void playGame() {
             gameOver = true;
             cout << "Game over, You quit the game.";
             break;
+            case 7:
+            // Assuming the player encounters an enemy in the current room
+            if (rooms[currentRoomIndex].hasEnemy) {
+                Enemy enemy = enemies[currentRoomIndex]; // Get the enemy instance from the enemies vector
+                performCombat(player, enemy); // Perform combat with the enemy
+                // Handle combat outcome, update player and enemy stats, etc
+            } else {
+                cout << "There is no enemy in this room. " << endl;
+            }
         default:
             cout << "Invalid input";
         }
