@@ -82,7 +82,7 @@ void initializeRooms() {
     //! Fix how the rooms are traversed they need spaces in the cout at the end on top of needing options that are not 0 - 3 need a way to better choose options in the rooms once the description of room is told to user
     // Be sure you can traverse the rooms, See what is in the room, then decide on what to do based off of what the player sees
     // Make a perception check for the players stat so that they may not be able to choose or even see options for rooms based off the check
-    // Have a lever in room 1 that needs a key or a piece of the lever so that it opens room7 leading to a "Boss" fight
+    /// Have a lever in room 1 that needs a key or a piece of the lever so that it opens room7 leading to a "Boss" fight
 }
 
 // Initialize items
