@@ -9,11 +9,11 @@ int main() {
         cout << "You are in a room " << currentRoom << endl;
 
         // Display available options
-        cout << "Options";
-        cout << "1 go to room 1";
-        cout << "2 go to room 2";
-        cout << "3 go to room 3";
-        cout << "0 Quit";
+        cout << "Options ";
+        cout << " 1 go to room 1 ";
+        cout << " 2 go to room 2 ";
+        cout << " 3 go to room 3 ";
+        cout << " 0 Quit ";
 
         // Get user input
         int choice;
@@ -43,3 +43,6 @@ int main() {
 
     return 0;
 }
+
+// get it so you can use it in the other program so that you cant go from room 4 to room 1 unless they are connected and if they cant be sure to have an else for that and msg printed\
+// also see if you cant get it printed to terminal like tic tac toe so that the player can get a map and see it in terminal
