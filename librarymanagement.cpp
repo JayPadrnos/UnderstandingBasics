@@ -91,4 +91,64 @@ class Library {
         cout << "Book not found or not borrowed by the specified borrower.";
         return false;
     }
-    //
+
+    void saveDataToFile() {
+        ofstream file("library.data.txt");
+        if (file.is.open()) {
+            for (const auto& book : books) {
+                file << "Book," << book.title << "," << book.author << "," << book.isAvailable << "\n";
+            }
+            for (const auto& borrower : borrowers) {
+                file << "Borrower, " << borrower.name << ",";
+                for (const auto& bookTitle : borrower.borrowedBooks) {
+                    file << bookTitle << ","
+                } 
+                file << "\n"
+            }
+            file.close()
+        }
+    }
+
+    void loadDataFromFile() {
+        ifstream file("library.data.txt");
+        if (file.is.open()) {
+            string line;
+            while (getline(file, line)) {
+                vector<string> tokens;
+                size_t pos = 0;
+                while ((pos = line.find(",")) != string::npos) {
+                    tokens.push_back(line.substr(0, pos));
+                    line.erase(0, pos + 1);
+                }
+                if (tokens[0] == "Book") {
+                    string title = tokens[1];
+                    string author = tokens[2];
+                    bool isAvailable = stoi(tokens[3]);
+                    book.push_back(Bok(title, author));
+                    books.back().isAvailable = isAvailable;
+                } else if (tokens[0] == "Borrower") {
+                    string name = token[1];
+                    Borrower borrowed(name);
+                    while ((pos = line.find(";")) != string::npos) {
+                        borrower.borrowedBooks.push_back(line.substr(0, pos));
+                        line.erase(0, pos + 1);
+                    }
+                    borrower.push_back(borrower);
+                }
+            }
+            file.close();
+        }
+    }
+};
+
+int main() {
+    Library library;
+    library.loadDataFromFile();
+
+
+    // Your menu-driven code for interacting with the library management system here
+    // You can add a loop to keep the program running until the user decides to close it
+    // Remember to call library.saveDataToFile() before exiting the program to save data
+
+    return 0;
+}    
