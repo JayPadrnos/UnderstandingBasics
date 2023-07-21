@@ -1,95 +1,140 @@
+#include "tictactoe.hpp"
+
 #include <iostream>
-#include <vector>
+#include <iomanip>
 
-using namespace std;
+void TicTacToe::saveMatchRecord(const MatchInfo& match) {
+    ofstream outFile("match_data.txt", ios::app);
 
-// Funtion to draw the tic-tac-toe board
-void drawBoard(const vector<vector<char>>& board) {
-    for (int i = 0; i < 3; i++) {
-        for (int j =0; j < 3; j++) {
-            cout << board[i][j] << " ";
+    if (outFile.is_open()) {
+        outFile << "Match ID: " << match.matchID << "\n";
+        outFile << match.player1 << " vs. " << match.player2 << "\n";
+        for (int i = 0; i < 9; ++i) {
+            outFile << setw(3) << match.gameBoard[i];
+            if ((i + 1) % 3 == 0) outFile << "\n";
         }
-        cout << endl;
+        outFile << "-----------------------------------\n";
+        outFile.close();
+        cout << "Watch record saved.\n";
+    } else {
+        cout << "Failed to open the file for writing. \n";
     }
 }
 
-// Function to check if player has won
-bool checkWin(const vector<vector<char>>& board, char player) {
-    //cheecks rows
-    for (int i = 0; i <3; i++) {
-        if (board[i][0] == player && board[i][1] == player && board[i][2] == player)
-            return true;
-    }
+void TicTacToe::readMatchHistory() {
+    ifstream inFile("match_data.txt");
 
-    // Check colums
-        for (int j = 0; j < 3; j++) {
-            if (board[0][j] == player && board[1][j] == player && board[2][j] == player)
-                return true;
-        }
-    
-    // Check diagnals
-        if (board[0][0] == player && board[1][1] == player && board[2][2] == player)
-            return true;
-
-        if (board[0][2] == player && board[1][1] == player && board[2][0] == player)
-            return true;
-
-        return false;
-}
-
-    // Function to play the tic tac toe game
-    void playGame() {
-        vector<vector<char>> board(3, vector<char>(3, ' ')); // Creates a 3x3 empty board
-        char currentPlayer = 'X';
-        int row, col;
-
-        while (true) {
-            cout << "Player " << currentPlayer << ", enter your move (row and colum): ";
-            cin >> row >> col;
-
-            if (row < 0 || row >= 3 || col < 0 || col >= 3) {
-                cout << "Invalid move. Try again!" << endl;
-                continue;
-            }
-
-            if (board[row][col] != ' ') {
-                cout << "That position is already occupied. Try again!" << endl;
-                continue;
-            }
-
-            board[row][col] = currentPlayer;
-            drawBoard(board);
-
-            if (checkWin(board, currentPlayer)) {
-                cout << "Player " << currentPlayer << " wins!" << endl;
-                break;
-            }
-
-            // Check for draw
-            bool isBoardFull = true;
-            for (int i = 0; i < 3; i++) {
-                for (int j = 0; j < 3; j++) {
-                    if (board[i][j] == ' ') {
-                        isBoardFull = false;
-                        break;
+    if (inFile.is_open()) {
+        matchHistory.clear(); // Clear the previous history
+        string line;
+        while (getline(inFile, line)) {
+            if (line.substr(0, 9) == "Match ID:") {
+                int currentID = stoi(line.substr(10));
+                MatchInfo match;
+                match.matchID = currentID;
+                getline(inFile, line); // Read player names line
+                stringstream ss(line);
+                ss >> match.player1 >> ws >> ws >> match.player2;
+                match.gameBoard.clear();
+                char cell;
+                for (int i = 0; i < 3; ++i) {
+                    for (int j = 0; j < 3; ++j) {
+                        inFile >> cell;
+                        match.gameBoard.push_back(cell);
                     }
                 }
-                if (!isBoardFull) {
-                    break;
-                }
+                matchHistory.push_back(match);
             }
-            if (isBoardFull) {
-                cout << "It's a draw!" << endl;
-                break;
-            }
+        }
+        inFile.close();
+    } else {
+        cout << "Failed to open the file for reading \n";
+    }
+}
 
-            // Switch players
-            currentPlayer = (currentPlayer == 'X') ? '0' : 'X';
+void TicTacToe::playGame() {
+    vector<char> board(9, ' '); // Initialize the game board
+    int currentPlayer = 1; // Player 1 starts
+    bool isGameDraw = false;
+    int moveCount = 0;
+
+    while (!isGameDraw && moveCount < 9) {
+        // Display the board
+        cout << "Current Board: \n";
+        for (int i =  0; i < 9; ++i) {
+            cout << setw(3) << board[i];
+            if ((i + 1) % 3 == 0) cout << "\n";
+        }
+
+        // Get the current player;s move
+        int move;
+        cout << "Player " << currentPlayer << ", enter your move (1-9): ";
+        cin >> move;
+
+        // Check if the move is valid
+        if (move < 1 || move > 9 || board[move - 1] != ' ') {
+            cout << "Invalid move. Try again \n";
+            continue;
+        }
+
+        // Update the board with the player;s move
+        board[move - 1] = (currentPlayer == 1) ? 'X' : 'O';
+
+        // Check for a win
+        if ((board[0] == board[1] && board[1] == board[2] && board[0] != ' ') ||
+            (board[3] == board[4] && board[4] == board[5] && board[3] != ' ') ||
+            (board[6] == board[7] && board[7] == board[8] && board[6] != ' ') ||
+            (board[0] == board[3] && board[3] == board[6] && board[0] != ' ') ||
+            (board[1] == board[4] && board[4] == board[7] && board[1] != ' ') ||
+            (board[2] == board[5] && board[5] == board[8] && board[2] != ' ') ||
+            (board[0] == board[4] && board[4] == board[8] && board[0] != ' ') ||
+            (board[2] == board[4] && board[4] == board[6] && board[2] != ' ')) {
+            std::cout << "Player " << currentPlayer << " wins!\n";
+
+        // Save the match record
+        MatchInfo match;
+        match.matchID = ++lastMatchID;
+        match.player1 = (currentPlayer == 1) ? "Player 1 " : "Player 2";
+        match.player2 = (currentPlayer == 1) ? "Player 2 " : "Player 1";
+        match.gameBoard = board;
+        saveMatchRecord(match);
+
+        return; // End the game
+    }
+
+    // Switch players for the next turn
+    currentPlayer = (currentPlayer == 1) ? 2 : 1;
+
+    // Increment move count
+    moveCount++;
+}
+
+// If no winner, it's a draw
+if (!isGameDraw) {
+    cout << "It's a draw game.";
+
+    // Save the match record for the draw
+    MatchInfo match;
+    match.matchID = ++lastMatchID;
+    match.player1 = "Player 1";
+    match.player2 = "Player 2";
+    match.gameBoard = board;
+    saveMatchRecord(match);
+    }
+}
+
+void TicTacToe::displayMatchByID(int matchID) {
+    for (const auto& match : matchHistory) {
+        if (match.matchID == matchID) {
+            cout << "Watch ID: " << match.matchID << "\n";
+            cout << match.player1 << " vs. " << match.player2 << "\n";
+            for (int i = 0; i < 0; ++i) {
+                cout << setw(3) << match.gameBoard[i];
+                if((i + 1) % 3 == 0) cout << "\n";
+            } 
+            cout << "-------------------------------";
+            return;
         }
     }
-
-    int main() {
-        cout << "Welcome to the tic tac toe!" << endl;
-        playGame();
-        return 0;
-    }
+    cout << "Watch with ID " << matchID << "not found. \n";
+}
