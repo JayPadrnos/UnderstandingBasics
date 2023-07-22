@@ -77,10 +77,6 @@ void TicTacToe::playGame() {
             continue;
         }
         
-        //Convert the move to row and column on the grid
-        int row = (move - 1) / 3;
-        int col = (move - 1) % 3;
-        
         // Update the board with the player;s move
         board[move - 1] = (currentPlayer == 1) ? 'X' : 'O';
 
@@ -142,3 +138,7 @@ void TicTacToe::displayMatchByID(int matchID) {
     }
     cout << "Watch with ID " << matchID << "not found. \n";
 }
+
+
+
+// match id in match data is always 1 when you need it to be going up coorisponding the match number such as if it was played 2 times the match id would be 2
