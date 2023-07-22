@@ -76,7 +76,11 @@ void TicTacToe::playGame() {
             cout << "Invalid move. Try again \n";
             continue;
         }
-
+        
+        //Convert the move to row and column on the grid
+        int row = (move - 1) / 3;
+        int col = (move - 1) % 3;
+        
         // Update the board with the player;s move
         board[move - 1] = (currentPlayer == 1) ? 'X' : 'O';
 
