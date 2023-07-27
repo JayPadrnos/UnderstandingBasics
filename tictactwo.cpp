@@ -84,6 +84,8 @@ void TicTacToe::displayBoard(const vector<char>& board) {
 }
 
 void TicTacToe::playGame() {
+    matchHistory.clear(); // clears match history before starting a new game in the menu
+
     vector<char> board(9, ' '); // Initialize the game board
     int currentPlayer = 1; // Player 1 starts
     bool isGameDraw = false;
@@ -174,5 +176,12 @@ void TicTacToe::playGame() {
             cout << "Match ID: " << " vs. " << match.player2 << "\n";
             displayBoard(match.gameBoard);
             cout << "-------------------------\n:";
+        }
+    }
+    void TicTacToe::displayAllMatchHistory() {
+        for (const auto& match : matchHistory) {
+            cout << "Match ID: " << match.matchID << "_____\n" << match.player1 << " vs. " << match.player2 << "\n";
+            displayBoard(match.gameBoard);
+            cout << "-------------------------\n";
         }
     }

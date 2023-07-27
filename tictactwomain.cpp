@@ -21,7 +21,8 @@ void mainMenu() {
         cout << "2. Game 2\n";
         cout << "3. Game 3\n";
         // Add additional games as you complete the current program
-        cout << "4. Exit\n";
+        cout << "4. View Match History\n";
+        cout << "9. Exit the Game_Hub\n";
         cout << "So what would you like to play?";
         cin >> choice;
 
@@ -53,6 +54,12 @@ void mainMenu() {
                     cout << "If game two was under construction why did you think Game 3 would be ready?";
                     break;
                 case 4:
+                    {
+                        TicTacToe ticTacToe;
+                        ticTacToe.displayAllMatchHistory();
+                        break;
+                    }
+                case 9:
                 cout << "Goodbye thanks for playing";
                     return;
                 default:

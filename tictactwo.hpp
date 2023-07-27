@@ -6,27 +6,30 @@
 
 using namespace std;
 
+struct MatchInfo { // Move MatchInfo outside the class
+    int matchID;
+    string player1;
+    string player2;
+    vector<char> gameBoard;
+};
+
 class TicTacToe {
     private:
-    struct MatchInfo {
-        int matchID;
-        string player1;
-        string player2;
-        vector<char> gameBoard;
-    };
+        vector<MatchInfo> matchHistory;
+        int lastMatchID;
 
-    vector<MatchInfo> matchHistory;
-    int lastMatchID;
+        void saveMatchRecord(const MatchInfo& match);
+        void readMatchHistory();
+        void displayMatchByID(int matchID);
+        void displayBoard(const vector<char>& board);
 
-    void saveMatchRecord(const MatchInfo& match);
-    void readMatchHistory();
-    void displayMatchByID(int matchID);
-    void displayBoard(const vector<char>& board);
+
 
     public:
-    TicTacToe();
-    void playGame();
-    void displayMatchHistory();
-};
+        TicTacToe();
+        void playGame();
+        void displayMatchHistory();
+        void displayAllMatchHistory();
+    };
 
 #endif
