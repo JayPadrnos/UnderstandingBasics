@@ -1,8 +1,9 @@
-#include "tictactoe.hpp"
+#include "tictactwo.hpp"
 #include <iostream>
 #include <iomanip>
 #include <fstream>
 #include <sstream>
+#include <algorithm> // For sorting
 
 using namespace std;
 
@@ -10,69 +11,69 @@ TicTacToe::TicTacToe() : lastMatchID(0) {
     readMatchHistory();
 }
 
-void TicTacToe::saveMatchRecord(const MatchInfo& match) {
-    ofstream outFile("match_data.txt", ios::app);
+void TicTacToe:: saveMatchRecord(const MatchInfo& match) {
+    ofstream outfile("match_data_two.txt", ios::app);
 
-    if (outFile.is_open()) {
-        outFile << "Match ID: " << match.matchID << "\n";
-        outFile << match.player1 << " vs. " << match.player2 << "\n";
+    if(outfile.is_open()) {
+        outfile << "Match ID: " << match.matchID << "\n";
+        outfile << match.player1 << " vs. " << match.player2 << "\n";
         for (int i = 0; i < 9; ++i) {
-            outFile << setw(3) << match.gameBoard[i];
-            if ((i + 1) % 3 == 0) outFile << "\n";
+            outfile << setw(4) << match.gameBoard[i];
+            if ((i + 1) % 3 == 0) outfile << "\n";
         }
-        outFile << "-----------------------------------\n";
-        outFile.close();
-        cout << "Watch record saved.\n";
+            outfile << "--------------------------------------------\n";
+            outfile.close();
+            cout << "Watch record saved. \n";
     } else {
-        cout << "Failed to open the file for writing. \n";
+        cout << "Failed to open the file for writing.\n";
     }
 }
 
 void TicTacToe::readMatchHistory() {
-    ifstream inFile("match_data.txt");
+    ifstream infile("match_data.txt");
 
-    if (inFile.is_open()) {
+    if (infile.is_open()) {
         matchHistory.clear(); // Clear the previous history
         string line;
-        while (getline(inFile, line)) {
+        while (getline(infile,line)) {
             if (line.substr(0, 9) == "Match ID:") {
                 int currentID = stoi(line.substr(10));
                 MatchInfo match;
                 match.matchID = currentID;
-                getline(inFile, line); // Read player names line
+                getline(infile, line); // Read player names live
                 stringstream ss(line);
                 ss >> match.player1 >> ws >> ws >> match.player2;
                 match.gameBoard.clear();
                 char cell;
                 for (int i = 0; i < 3; ++i) {
                     for (int j = 0; j < 3; ++j) {
-                        inFile >> cell;
+                        infile >> cell;
                         match.gameBoard.push_back(cell);
                     }
                 }
-                matchHistory.push_back(match);
+                    matchHistory.push_back(match);
             }
         }
-        inFile.close();
+        infile.close();
     } else {
-        cout << "Failed to open the file for reading \n";
+        cout << "Failed to open the file for reading. \n";
     }
 }
 
 void TicTacToe::displayMatchByID(int matchID) {
     for (const auto& match : matchHistory) {
         if (match.matchID == matchID) {
-            cout << "Match ID: " << match.matchID << "\n";
+            cout << "Match ID: " << match.matchID << " vs. " << match.player2 <<"\n";
             cout << match.player1 << " vs. " << match.player2 << "\n";
-            for (int i = 0; i < 9; ++i) {
+            for (int i = 0; i < 3; ++i) {
                 cout << setw(3) << match.gameBoard[i];
                 if ((i + 1) % 3 == 0) cout << "\n";
             }
-            cout << "------------------------\n";
+            cout << "---------------------------------\n";
             return;
         }
     }
-    cout << "Match with ID " << matchID << " not found. \n";
+        cout << "Match with ID " << matchID << " not found. \n"; 
 }
 
 void TicTacToe::displayBoard(const vector<char>& board) {
@@ -89,7 +90,7 @@ void TicTacToe::playGame() {
     int moveCount = 0;
 
     while (!isGameDraw && moveCount < 9) {
-        // Display the board
+        // Display board
         cout << "Current Board: \n";
         displayBoard(board);
 
@@ -98,26 +99,26 @@ void TicTacToe::playGame() {
         cout << "Player " << currentPlayer << ", enter your move (1-9):";
         cin >> move;
 
-        // Map the numpad input to the corresponding position on the board
+        // map the numpad input to the corresponding position on the board 
         int mappedMove;
         switch (move) {
-            case 7: mappedMove = 6; break; // top left
-            case 8: mappedMove = 7; break; // top middle
-            case 9: mappedMove = 8; break; // tope right 
-            case 4: mappedMove = 3; break; // middle left
-            case 5: mappedMove = 4; break; // middle center
-            case 6: mappedMove = 5; break; // middle right
-            case 1: mappedMove = 0; break; // bottom left
-            case 2: mappedMove = 1; break; // bottom middle
-            case 3: mappedMove = 2; break; // bottom right
-            default:
-                cout << "Invalid move. try again. \n";
+            case 1: mappedMove = 6; break;
+            case 2: mappedMove = 7; break;
+            case 3: mappedMove = 8; break;
+            case 4: mappedMove = 3; break;
+            case 5: mappedMove = 4; break;
+            case 6: mappedMove = 5; break;
+            case 7: mappedMove = 0; break;
+            case 8: mappedMove = 1; break;
+            case 9: mappedMove = 2; break;
+                default:
+                cout << "Invalid move. Please re enter a number 1 - 9 ";
                 continue;
         }
 
         // Check if the move is valid
         if (board[mappedMove] != ' ') {
-            cout << "Invalid move. Try again \n";
+            cout << "Invalid move. The cell is already occupied. Please re enter a number 1 - 9";
             continue;
         }
 
@@ -133,30 +134,32 @@ void TicTacToe::playGame() {
             (board[2] == board[5] && board[5] == board[8] && board[2] != ' ') ||
             (board[0] == board[4] && board[4] == board[8] && board[0] != ' ') ||
             (board[2] == board[4] && board[4] == board[6] && board[2] != ' ')) {
-            std::cout << "Player " << currentPlayer << " wins!\n";
-
-            // Switch players for the next turn
-            currentPlayer = (currentPlayer == 1) ? 2 : 1;
-
-            // Increment move count
-            moveCount++;
-        }
-
-            // If no winner, it's a draw
-            if (!isGameDraw) {
-            cout << "It's a draw game.";
-        }
-
-        // Save the match record
-        MatchInfo match;
-        match.matchID = ++lastMatchID;
-        match.player1 = "Player 1";
-        match.player2 = "Player 2";
-        match.gameBoard = board;
-        saveMatchRecord(match);
+            cout << "Player " << currentPlayer << " wins!\n";
+            break; // End the loop since there is a winner
     }
 
-    // Save the match record for the draw
+    // Switch players for the next turn
+    currentPlayer = (currentPlayer == 1) ? 2 : 1;
+
+    // Increment move count
+    moveCount++;
+
+    // Check if the game is a draw
+    isGameDraw = (moveCount == 9);
+}
+
+    // Display the final board
+    cout << "Final Board: \n";
+    displayBoard(board);
+
+    // Display the game result
+    if (!isGameDraw) {
+        cout << "Congratulations, Player " << currentPlayer << " wins \n";
+    } else {
+        cout << "It's a draw game. \n";
+    }
+
+    // Save the match record
     MatchInfo match;
     match.matchID = ++lastMatchID;
     match.player1 = "Player 1";
@@ -165,12 +168,11 @@ void TicTacToe::playGame() {
     saveMatchRecord(match);
 }
 
-void TicTacToe::displayMatchHistory() {
-    cout << "Match History: \n";
-    for (const auto& match : matchHistory) {
-        cout << "Match ID: " << match.matchID << "\n";
-        cout << match.player1 << " vs. " << match.player2 << "\n";
-        displayBoard(match.gameBoard);
-        cout << "-----------------------------------\n";
+    void TicTacToe::displayMatchHistory() {
+        cout << "Match History: \n";
+        for (const auto& match: matchHistory) {
+            cout << "Match ID: " << " vs. " << match.player2 << "\n";
+            displayBoard(match.gameBoard);
+            cout << "-------------------------\n:";
+        }
     }
-}
