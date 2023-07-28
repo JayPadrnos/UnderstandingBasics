@@ -67,3 +67,5 @@ void mainMenu() {
         }
     }
 }
+
+// lazy quote
