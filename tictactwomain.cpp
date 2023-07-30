@@ -1,5 +1,6 @@
 #include <iostream>
 #include "tictactwo.hpp"
+#include "adventure.hpp"
 
 using namespace std;
 
@@ -18,7 +19,7 @@ void mainMenu() {
     while (true) {
         cout << "\nMain Menu:\n";
         cout << "1. Tic Tac Toe\n";
-        cout << "2. Game 2\n";
+        cout << "2. Adventure\n";
         cout << "3. Game 3\n";
         // Add additional games as you complete the current program
         cout << "4. View Match History\n";
@@ -46,8 +47,8 @@ void mainMenu() {
                         break;
             }
                 case 2:
-                    // Cell game2() function here
-                    cout << "Game 2 Under construction. Come back later to see if its complete";
+                   Adventure adventureGame; // Create an instance of the adventure
+                   adventureGame.startGame();
                     break;
                 case 3:
                     // Cell game3() function here
@@ -67,5 +68,3 @@ void mainMenu() {
         }
     }
 }
-
-// lazy quote
