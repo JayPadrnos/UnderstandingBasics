@@ -46,16 +46,16 @@ void mainMenu() {
                         ticTacToe.displayMatchHistory();
                         break;
             }
-                case 2:
+                case 2: {
                    Adventure adventureGame; // Create an instance of the adventure
                    adventureGame.startGame();
                     break;
+                }
                 case 3:
                     // Cell game3() function here
                     cout << "If game two was under construction why did you think Game 3 would be ready?";
                     break;
-                case 4:
-                    {
+                case 4: {
                         TicTacToe ticTacToe;
                         ticTacToe.displayAllMatchHistory();
                         break;

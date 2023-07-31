@@ -3,6 +3,7 @@
 
 #include<vector>
 #include <chrono> // For time related functionality
+#include <string>
 
 using namespace std;
 
@@ -11,8 +12,8 @@ class Adventure {
         int playerLife; 
         bool hasSword; 
         bool hasKey;
-        chrono::steady.clock::time_point startTime; // Start time of the game
-        chrono::steady.clock::time_point endTime;
+        chrono::steady_clock::time_point startTime; // Start time of the game
+        chrono::steady_clock::time_point endTime;
 
     public:
         Adventure(); // Constructor

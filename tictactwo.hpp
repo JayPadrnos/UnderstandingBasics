@@ -11,6 +11,7 @@ struct MatchInfo { // Move MatchInfo outside the class
     string player1;
     string player2;
     vector<char> gameBoard;
+    string gameDuration;
 };
 
 class TicTacToe {
@@ -18,6 +19,7 @@ class TicTacToe {
         vector<MatchInfo> matchHistory;
         int lastMatchID;
 
+        string getTimeDuration();
         void saveMatchRecord(const MatchInfo& match);
         void readMatchHistory();
         void displayMatchByID(int matchID);

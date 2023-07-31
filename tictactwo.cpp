@@ -4,6 +4,7 @@
 #include <fstream>
 #include <sstream>
 #include <algorithm> // For sorting
+#include <string> 
 
 using namespace std;
 
@@ -21,6 +22,10 @@ void TicTacToe:: saveMatchRecord(const MatchInfo& match) {
             outfile << setw(4) << match.gameBoard[i];
             if ((i + 1) % 3 == 0) outfile << "\n";
         }
+
+        // Add the game duration to the match history
+            outfile << "Game duration: " << match.gameDuration << "\n";
+
             outfile << "--------------------------------------------\n";
             outfile.close();
             cout << "Watch record saved. \n";
@@ -167,6 +172,7 @@ void TicTacToe::playGame() {
     match.player1 = "Player 1";
     match.player2 = "Player 2";
     match.gameBoard = board;
+    match.gameDuration = getTimeDuration(); // Set the game duration
     saveMatchRecord(match);
 }
 
