@@ -1,0 +1,1 @@
+// find ways to not only incoperate functions as a file in its own to call upon on a library and header file so that when you do need a function you can call upon that file and use it's functions
