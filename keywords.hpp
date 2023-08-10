@@ -9,12 +9,14 @@ using namespace std;
 struct KeywordDefinition {
     string keyword;
     string definition;
+    string category;
 };
 
 class KeywordLibrary {
     public:
-        void addKeyword(const string &keyword, const string &definition);
-        const KeywordDefinition* getKeywordDefinition(const string &keyword) const;
+        void addKeyword(const string &keyword, const string &definition, const string &category);
+        vector<KeywordDefinition> getKeywordsByCategory(const string &category) const;
+        const KeywordDefinition *getKeywordDefinition(const string &keyword) const;
         void printAllKeywords() const;
 
     private:

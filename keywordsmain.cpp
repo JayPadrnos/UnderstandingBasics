@@ -20,7 +20,8 @@ int main() {
         cout << "Options: \n";
         cout << "1. Print all keywords and definitions\n";
         cout << "2. Get all definitions of a specific keyword\n";
-        cout << "3. Exit\n";
+        cout << "3. Search for keywords by category.\n";
+        cout << "4. Exit\n";
 
         cout << "Enter your choice. ";
         cin >> choice;
@@ -42,12 +43,28 @@ int main() {
                 }
                     break;
             case '3':
+                cout << "Enter the category: ";
+                getline(cin, query);
+
+                vector<KeywordDefinition> categoryKeywords = keywordLibrary.getKeywordsByCategory(query);
+                if (!categoryKeywords.empty()) {
+                    for (const auto &def : categoryKeywords) {
+                        cout << "Keyword: " << def.keyword << "\n";
+                        cout << "Definition: " << def.definition << "\n";
+                        cout << "Category: "  << def.category << "\n";
+                        cout << "------------------------------------\n";
+                    }
+                } else {
+                    cout << "NO keywords found in the specified category. \n";
+                }
+                    break;
+            case '4':
                 cout << "Exiting...\n";
                 break;
             default:
                 cout << "Invalid choice. Try again. \n";
         }
-    } while (choice != '3');
+    } while (choice != '4');
     
     return 0;
 }
