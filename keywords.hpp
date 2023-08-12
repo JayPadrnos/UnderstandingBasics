@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <optional>
 
 using namespace std;
 
@@ -16,7 +17,7 @@ class KeywordLibrary {
     public:
         void addKeyword(const string &keyword, const string &definition, const string &category);
         vector<KeywordDefinition> getKeywordsByCategory(const string &category) const;
-        const KeywordDefinition *getKeywordDefinition(const string &keyword) const;
+        optional<KeywordDefinition> getKeywordDefinition(const string &keyword) const;
         void printAllKeywords() const;
 
     private:

@@ -1,20 +1,23 @@
 #include "Keywords.hpp"
 #include <iostream>
+#include <limits>
 
 using namespace std;
 
 int main() {
     KeywordLibrary keywordLibrary;
     
-    keywordLibrary.addKeyword("class", "A blueprint for creating objects.");
-    keywordLibrary.addKeyword("function", "A block of code that performs a specific task.");
-    keywordLibrary.addKeyword("variable", "A name storage location that holds a value.");
+    keywordLibrary.addKeyword("class", "A blueprint for creating objects.", "Programming");
+    keywordLibrary.addKeyword("function", "A block of code that performs a specific task.", "Programming");
+    keywordLibrary.addKeyword("variable", "A name storage location that holds a value.", "Programming");
     // Add more the more you learn.
 
     string query;
     char choice;
 
     const KeywordDefinition* definition = nullptr; // Declare and initialize outside the switch
+    optional<KeywordDefinition> definitionOpt;
+    vector<KeywordDefinition> categoryKeywords;
 
     do {
         cout << "Options: \n";
@@ -25,7 +28,12 @@ int main() {
 
         cout << "Enter your choice. ";
         cin >> choice;
-        cin.ignore(); // Clear the newline character from the buffer
+
+        if(!cin) {
+            //Clear the input buffer
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear the newline character from the buffer
+        }
 
         switch (choice) {
             case '1':
@@ -35,18 +43,19 @@ int main() {
                 cout << "Enter the keyword: ";
                 getline(cin, query);
 
-                definition = keywordLibrary.getKeywordDefinition(query); // Assign the value here
-                if (definition) {
-                    cout << "Definition: " << definition->definition << "\n";
+                definitionOpt = keywordLibrary.getKeywordDefinition(query);
+                if (definitionOpt) {
+                    KeywordDefinition definition = *definitionOpt;
+                    cout << "Definition: " << definition.definition << "\n";
                 } else {
                     cout << "Keyword not found. \n";
                 }
-                    break;
+                break;
             case '3':
                 cout << "Enter the category: ";
                 getline(cin, query);
 
-                vector<KeywordDefinition> categoryKeywords = keywordLibrary.getKeywordsByCategory(query);
+                categoryKeywords = keywordLibrary.getKeywordsByCategory(query);
                 if (!categoryKeywords.empty()) {
                     for (const auto &def : categoryKeywords) {
                         cout << "Keyword: " << def.keyword << "\n";

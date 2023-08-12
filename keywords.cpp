@@ -18,23 +18,23 @@ void KeywordLibrary::printAllKeywords() const {
     }
 }
 
-const KeywordDefinition* KeywordLibrary::getKeywordDefinition(const string &keyword) const {
+optional<KeywordDefinition> KeywordLibrary::getKeywordDefinition(const string &keyword) const {
     for (const auto &def : definitions) {
         if (def.keyword == keyword) {
-            return &def;
+            return optional<KeywordDefinition>(def);
         }
     }
-    return nullptr;
+    return nullopt;
 }
 
 vector<KeywordDefinition> KeywordLibrary::getKeywordsByCategory(const string &category) const {
     vector<KeywordDefinition> keywords;
 
-        for (const auto &def : definitions) {
-            if (def.category == category) {
-                keywords.push_back(def);
-            }
+    for (const auto &def : definitions) {
+        if (def.category == category) {
+            keywords.push_back(def);
         }
+    }
 
-        return keywords;
+    return keywords;
 }
