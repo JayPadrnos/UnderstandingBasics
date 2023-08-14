@@ -77,3 +77,5 @@ int main() {
     
     return 0;
 }
+
+// have a way to save words within the program so that you are able to not only enter new words and descriptions here but also inside the program
