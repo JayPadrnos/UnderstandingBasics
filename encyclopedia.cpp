@@ -1,4 +1,4 @@
-#include "Encyclopedia.hpp"
+#include "encyclopedia.hpp"
 #include <iostream>
 
 void Encyclopedia::addEntry(const std::string &keyword, const std::string &definition, const std::string &subject, const std::string &category, const std::string &example) {

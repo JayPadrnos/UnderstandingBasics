@@ -1,4 +1,4 @@
-#include "Encyclopedia.hpp"
+#include "encyclopedia.hpp"
 #include <iostream>
 #include <limits>
 
