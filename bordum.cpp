@@ -13,3 +13,4 @@
 //stats and skills menu
 //different attacks for weapons
 //skills for player to have moves that are not dependent on weapons but do different things with dif weapons
+// different classes of characters or rather skill paths they can go down
