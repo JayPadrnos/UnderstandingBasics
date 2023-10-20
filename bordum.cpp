@@ -19,7 +19,7 @@
 // have an mp3 playing for backround music and an adjust volume meter
 // have animation for character using key items or levers or buttons
 // have an end screen animation then credits when beating the final boss with a continue play and respawn player at spawn and reset the world while increasing difficulty
-
+// create easter eggs inside of the maps so that players can uncover hidden items 
 
 
 // DirectX for API allow for Proton through steam allowing for Linux to run the game.
