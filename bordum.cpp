@@ -56,3 +56,17 @@
 
 ///// Visualizer with audio
 ////// Push the button Game
+
+
+//Geometry Learn 3D gemoetry, which includes understanding vertices edges and faces 
+//Coordinate Systems Understand the different coordinate systems, such as world space, object space, camera space and screen space, these are essentially for placing rendering objects in 3d
+//Transformations Study transformations like translation rotation and scaling
+//Projection Learn about projection both orthograpphic and perspective projection matrices are crucial for mapping 3d objects onto a 2d screen
+//Shading and lighting understand the basics of shading and lighting models. simple models like Lambertian reflection are a good starting point
+//Matrices Familiarize yourself with matrix operations which are used extensively in 3d graphics for transformations and projections
+//Rasterization the process of converting 3d objects into 2D pixels on the screen 
+//Z-Buffering Understand z-buffering for handling depth information adetermining which objects are visible in the scene
+//Rendering pipline study the graghics renderring pipleine including vertex processing geometry proccessing pixel processing and the stages of a graphics API like DirectX or OpenGL
+//Shaders get acquainted with shaders which are programs useed to control the rendering of 3d objects youll typically need to write vertex and fragment pixel shaders
+//User Input learn how to handle user input as youll want tto control the position adn orientation of your 3d objects interactively
+//Mathematics refresh your knowledge of linear algebra trigonometry and vector mathematics these are fundamentals to understanding 3d graphics
