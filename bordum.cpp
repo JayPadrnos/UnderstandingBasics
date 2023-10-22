@@ -70,3 +70,6 @@
 //Shaders get acquainted with shaders which are programs useed to control the rendering of 3d objects youll typically need to write vertex and fragment pixel shaders
 //User Input learn how to handle user input as youll want tto control the position adn orientation of your 3d objects interactively
 //Mathematics refresh your knowledge of linear algebra trigonometry and vector mathematics these are fundamentals to understanding 3d graphics
+
+
+//tabletop sim with 3d rendered 4 chairs to start look to add war table type
