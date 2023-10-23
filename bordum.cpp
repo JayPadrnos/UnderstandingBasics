@@ -73,3 +73,6 @@
 
 
 //tabletop sim with 3d rendered 4 chairs to start look to add war table type
+
+
+//Javascript to C++ wrapper and C++ to javascript wrapper
