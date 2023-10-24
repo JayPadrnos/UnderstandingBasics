@@ -75,4 +75,43 @@
 //tabletop sim with 3d rendered 4 chairs to start look to add war table type
 
 
+
+
+
+///    Ked project
 //Javascript to C++ wrapper and C++ to javascript wrapper
+////
+
+
+// API's < Framework > GUI > Graphics and Rendering code
+// Must work with OS API's 
+// User friendly 
+// Ability to overcome and adapt to updates of other OS API's
+
+// API
+// Define it; the functionality of a graphics API. Consider what graphic primitives, (e.g. lines triangles quads); rendering techniques you want to implement 
+// Understand the graphics hardware on the platforms available, study GPU architectures, shader languages, and the graphics pipeline.
+// Core rendering engine implement functions for rendering primitives, setting up buffers, and managing the rendering pipeline.
+// Design and implement a shading language for specifying how objects are shaded and lit **Critical Component** of a graphics API
+// Implement data structures and algorithms for managing geometry data such as vertices, triangles, and textures.
+// Math Library Develop a math library to handle transformations, vectors, matrices, and other mathmatical operations used in graphics
+// Minimize data transfer between cpu and gpu, culling techniques
+// Render techniques such as shadow mapping post processing effects and anti-ailasing, depending on the capabilities you want to offer
+// Create a system for managing windows and graphics contexts on different platforms This may involve interacting with platform specif windowing API's
+// Cross platform consider porting it to different OS's and graphic hardware
+// Document to help devs understand and use your API
+// Test and debug till it is ironed out
+// Build a community around the API offering support and resources for devs
+// Build an ecosystem for the API including dev tools and asset pipelines and third party plugins
+// Decide on the licensing terms and distribution method for your API
+//  Be prepped for updates and mantenance for the API as new hardware and software dev arise
+
+
+
+// Shader Language
+
+
+
+
+// Core Rendering engine
+
