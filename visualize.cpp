@@ -1,7 +1,12 @@
 #define UNICODE
 #define _UNICODE
 
+
 #include <windows.h>
+#include <mfapi.h>
+#include <mfidl.h>
+#include <mfreadwrite.h>
+
 
 int CALLBACK WinMain(
     HINSTANCE hInstance,
@@ -27,9 +32,50 @@ int CALLBACK WinMain(
         return 1;
     }
 
-    // Step 3: Show and update the window
+     // Step 3: Show and update the window
     ShowWindow(hwnd, nCmdShow);
     UpdateWindow(hwnd);
+
+    HRESULT hr = CoInitializeEx(NULL, COINIT_APARTMENTTHREADED);
+    if (SUCCEEDED(hr)) {
+        hr = MFStartup(MF_VERSION);
+    }
+
+    IMFSourceResolver* pSourceResolver = NULL;
+    IMFByteStream* pByteStream = NULL;
+    IMFMediaSource* pMediaSource = NULL;
+
+// Source resolver
+hr = MFCreateSourceResolver(&pSourceResolver);
+    if (SUCCEEDED(hr)) {
+        // Resolve the URL to the media source
+        // Set up Attributes with the required attributes
+        IMFAttributes* attributes = NULL;
+        hr = MFCreateAttributes(&attributes, 1);
+        if (SUCCEEDED(hr)) {
+            // Set Attributes here, if needed
+            // For example, to specify a source resolver, you can set an attribute like this:
+            // hr = pPropertyStore->SetValue(MF_PD_PWPHOST_CONTEXT,  pSourceResolver);
+
+            // Resolve the URL to the media source
+        hr = pSourceResolver->CreateObjectFromURL(L"your_audio.mp3", MF_RESOLUTION_MEDIASOURCE, pPropertyStore, NULL, NULL, &pMediaSource);
+        pPropertyStore->Release(); // Release the property store when done
+    } 
+}
+
+IMFSourceReader* pReader = NULL;
+hr = MFCreateSourceReaderFromMediaSource(pMediaSource, NULL, &pReader);
+
+//Loop to readd audio samples and perform analysis
+// ........
+
+// Clean up
+pReader->Release();
+pMediaSource->Release();
+pSourceResolver->Release();
+
+MFShutdown();
+CoUninitialize();
 
     // Step 4: Message loop
     MSG msg;
