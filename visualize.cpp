@@ -36,14 +36,21 @@ int CALLBACK WinMain(
     ShowWindow(hwnd, nCmdShow);
     UpdateWindow(hwnd);
 
-    HRESULT hr = CoInitializeEx(NULL, COINIT_APARTMENTTHREADED);
+    IMFSourceResolver* pSourceResolver = NULL;
+    IMFByteStream* pByteStream = NULL;
+    IMFMediaSource* pMediaSource = NULL;
+    IPropertyStore* pPropertyStore = NULL;
+
+     HRESULT hr = CoInitializeEx(NULL, COINIT_APARTMENTTHREADED);
     if (SUCCEEDED(hr)) {
         hr = MFStartup(MF_VERSION);
     }
 
-    IMFSourceResolver* pSourceResolver = NULL;
-    IMFByteStream* pByteStream = NULL;
-    IMFMediaSource* pMediaSource = NULL;
+    HRESULT hr = PSCreateMemoryPropertyStore(IID_PPV_ARGS(&pPropertyStore));
+    if (SUCCEEDED(hr)) {
+        // Property store created successfully.
+    }
+
 
 // Source resolver
 hr = MFCreateSourceResolver(&pSourceResolver);
@@ -63,10 +70,16 @@ hr = MFCreateSourceResolver(&pSourceResolver);
     } 
 }
 
+    // Assuming you have a custom resolver object in pSourceResolver
+    hr = pPropertyStore->SetValue(MF_PD_PMPHOST_CONTEXT, pSourceResolver);
+    if (SUCCEEDED(hr)) {
+        // Attribute set successfully.
+    }
+
 IMFSourceReader* pReader = NULL;
 hr = MFCreateSourceReaderFromMediaSource(pMediaSource, NULL, &pReader);
 
-//Loop to readd audio samples and perform analysis
+//Loop to read audio samples and perform analysis
 // ........
 
 // Clean up
