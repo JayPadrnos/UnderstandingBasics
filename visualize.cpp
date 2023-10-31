@@ -36,15 +36,15 @@ int CALLBACK WinMain(
     ShowWindow(hwnd, nCmdShow);
     UpdateWindow(hwnd);
 
+    HRESULT hr = CoInitializeEx(NULL, COINIT_APARTMENTTHREADED);
+    if (SUCCEEDED(hr)) {
+        hr = MFStartup(MF_VERSION);
+    }
+
     IMFSourceResolver* pSourceResolver = NULL;
     IMFByteStream* pByteStream = NULL;
     IMFMediaSource* pMediaSource = NULL;
     IPropertyStore* pPropertyStore = NULL;
-
-     HRESULT hr = CoInitializeEx(NULL, COINIT_APARTMENTTHREADED);
-    if (SUCCEEDED(hr)) {
-        hr = MFStartup(MF_VERSION);
-    }
 
     HRESULT hr = PSCreateMemoryPropertyStore(IID_PPV_ARGS(&pPropertyStore));
     if (SUCCEEDED(hr)) {
@@ -66,7 +66,9 @@ hr = MFCreateSourceResolver(&pSourceResolver);
 
             // Resolve the URL to the media source
         hr = pSourceResolver->CreateObjectFromURL(L"your_audio.mp3", MF_RESOLUTION_MEDIASOURCE, pPropertyStore, NULL, NULL, &pMediaSource);
-        pPropertyStore->Release(); // Release the property store when done
+        if (SUCCEEDED(hr)) {
+            // Media source resolved successfully
+        }
     } 
 }
 
@@ -86,6 +88,7 @@ hr = MFCreateSourceReaderFromMediaSource(pMediaSource, NULL, &pReader);
 pReader->Release();
 pMediaSource->Release();
 pSourceResolver->Release();
+pPropertyStore->Release();
 
 MFShutdown();
 CoUninitialize();
