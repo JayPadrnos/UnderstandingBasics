@@ -65,6 +65,7 @@ hr = MFCreateSourceResolver(&pSourceResolver);
             // hr = pPropertyStore->SetValue(MF_PD_PWPHOST_CONTEXT,  pSourceResolver);
 
             // Resolve the URL to the media source
+            const wchar_t* filePath = L"C:\Users\repti\OneDrive\Desktop\FirstSong.mp3";
         hr = pSourceResolver->CreateObjectFromURL(L"your_audio.mp3", MF_RESOLUTION_MEDIASOURCE, pPropertyStore, NULL, NULL, &pMediaSource);
         if (SUCCEEDED(hr)) {
             // Media source resolved successfully
