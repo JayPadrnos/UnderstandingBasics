@@ -39,7 +39,7 @@ case WM_KEYDOWN:
             rectY += 10;
             break;
         case VK_DOWN:
-            rectY += 10;
+            rectY -= 10;
             break;
     }
     // Redraw the window to update the rectangles position
