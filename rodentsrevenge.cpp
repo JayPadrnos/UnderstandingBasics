@@ -31,3 +31,11 @@ void CheckCollision();
 void CollectCheese();
 void TriggerBomb();
 void HandleKeyPress(WPARAM key);
+void CALLBACK CheeseTimerCallback(HWND hwnd, UINT message, UINT_PTR idEvent, DWORD dwTime);
+void CALLBACK BombTimerCallback(HWND hwnd, UINT message, UINT_PTR idEvent, DWORD doTime);
+void CALLBACK TimeLimitTimerCallback(HWND hwnd, UINT message, UINT_PTR idEvent, DWORD dwTime);
+
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
+    // Register the window class
+    const wchar_t CLASS_NAME[] = L"RodentsRevengeClass";
+}
