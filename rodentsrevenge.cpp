@@ -1,3 +1,4 @@
+
 #include <windows.h>
 #include <vector>
 #include <ctime>
@@ -48,7 +49,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     RegisterClass(&wc);
 
     // Create the window.
-    HWND hwnd = CreateWindowEx(
+    HWND hwnd = CreateWindowExW(
         0,                      // Optional window styles.
         CLASS_NAME,             // Window Class
         L"Rodent's Revenge",    // Window text
@@ -241,7 +242,7 @@ void CALLBACK BombTimerCallback(HWND hwnd, UINT message, UINT_PTR idEvent, DWORD
 
 void CALLBACK TimeLimitTimerCallback(HWND hwnd, UINT message, UINT_PTR idEvent, DWORD dwTime) {
     if (idEvent == TIME_LIMIT) {
-        MessageBox(hwnd, L"Game Over! Time limit reached.", L"Game Over", MB_OK | MB_ICONINFORMATION);
+        MessageBoxW(hwnd, L"Game Over! Time limit reached.", L"Game Over", MB_OK | MB_ICONINFORMATION);
         PostQuitMessage(0);
     }
 }
