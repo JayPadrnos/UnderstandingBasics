@@ -131,9 +131,34 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
 void DrawGrid(HDC hdc) {
     for (int i = 0; i < GRID_SIZE; i++) {
         for (int j = 0; j < GRID_SIZE; j++) {
-            RECT callRect = {i * CELL_SIZE, j * CELL_SIZE, (i + 1) * CELL_SIZE, (j + 1) * CELL_SIZE};
-            // TODO: Draw the cells based on game state.
-            // Use Rectangle(hdc; cellRect.left, cellRect.top, cellRect.right, cellRect.bottom) and other drawing functions
+            RECT cellRect;
+            cellRect.left = i * CELL_SIZE;
+            cellRect.top = j * CELL_SIZE;
+            cellRect.right = (i + 1) * CELL_SIZE;
+            cellRect.bottom = (j + 1) * CELL_SIZE;
+            // Draw the cells based on game state.
+
+            if (i == playerX && j == playerY) {
+                // Draw the player
+                Rectangle(hdc, cellRect.left, cellRect.top, cellRect.right, cellRect.bottom);
+            }
+
+            for(int k = 0; k < NUM_CATS; k++) {
+                if (i == catXPositions[k] && j == catYPositions[k]) {
+                    // Draw a cat
+                    Ellipse(hdc, cellRect.left, cellRect.top, cellRect.right, cellRect.bottom);
+                }
+            }
+
+            if (i == cheeseX && j == cheeseY && hasCheese) {
+                // Draw cheese
+                Rectangle(hdc, cellRect.left, cellRect.top, cellRect.right, cellRect.bottom);
+            }
+
+            if (i == bombX && j == bombY && hasBomb) {
+                // Draw a bomb
+                Rectangle(hdc, cellRect.left, cellRect.top, cellRect.right, cellRect.bottom);
+            }
         }
     }
 }
