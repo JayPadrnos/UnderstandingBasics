@@ -246,3 +246,5 @@ void CALLBACK TimeLimitTimerCallback(HWND hwnd, UINT message, UINT_PTR idEvent, 
         PostQuitMessage(0);
     }
 }
+
+// FUUUUUCKKKKINGINGNINGINGINGINGINGINGINGINGINGINGINGINGINGINg
