@@ -129,6 +129,12 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
 }
 
 void DrawGrid(HDC hdc) {
+    // CLear the entire window
+    RECT clientRect;
+    GetClientRect(GetActiveWindow(), &clientRect);
+    FillRect(hdc, &clientRect, (HBRUSH)GetStockObject(WHITE_BRUSH));
+
+    // Game state
     for (int i = 0; i < GRID_SIZE; i++) {
         for (int j = 0; j < GRID_SIZE; j++) {
             RECT cellRect;
