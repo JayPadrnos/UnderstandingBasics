@@ -294,3 +294,4 @@ void CALLBACK TimeLimitTimerCallback(HWND hwnd, UINT message, UINT_PTR idEvent, 
 }
 
 // Code is fixed and compile ready, however white screen appears with nothing on screen, more work must be done other than just logic behind game itself.
+//lazy 
