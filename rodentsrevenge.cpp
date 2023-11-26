@@ -129,6 +129,11 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
 }
 
 void DrawGrid(HDC hdc) {
+
+                    // DEBUG statement to print info about entering the drawgrid function
+                    DebugPrint("Entering Drawgrid function....");
+
+
     // CLear the entire window
     RECT clientRect;
     GetClientRect(GetActiveWindow(), &clientRect);
@@ -142,11 +147,17 @@ void DrawGrid(HDC hdc) {
             cellRect.top = j * CELL_SIZE;
             cellRect.right = (i + 1) * CELL_SIZE;
             cellRect.bottom = (j + 1) * CELL_SIZE;
-            // Draw the cells based on game state.
+            
+                     // DEBUG to print cell coords
+                     printf("Cell (%d, %d\n", i, j);
 
+            // Draw the cells based on game state.
             if (i == playerX && j == playerY) {
                 // Draw the player
                 Rectangle(hdc, cellRect.left, cellRect.top, cellRect.right, cellRect.bottom);
+
+                     // DEBUG to print player position
+                     DebugPrint("Drawing the player...");
             }
 
             for(int k = 0; k < NUM_CATS; k++) {
@@ -164,6 +175,10 @@ void DrawGrid(HDC hdc) {
             if (i == bombX && j == bombY && hasBomb) {
                 // Draw a bomb
                 Rectangle(hdc, cellRect.left, cellRect.top, cellRect.right, cellRect.bottom);
+            
+                        // DEBUG statement to print info about exiting DrawGrid
+                        DebugPrint("Exiting DrawGrid function....");
+            
             }
         }
     }
