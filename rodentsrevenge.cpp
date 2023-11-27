@@ -1,5 +1,6 @@
 #define UNICODE
 #include <windows.h>
+#include <wingdi.h>
 #include <vector>
 #include <ctime>
 #include <cstdlib>
@@ -23,6 +24,7 @@ bool hasCheese = false;
 bool hasBomb = false;
 int score = 0;
 DWORD startTime;
+COLORREF playerColor = RGB(128, 128, 255);  // Blueish grey
 
 // Function declarations
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM mParam, LPARAM lParam);
@@ -129,11 +131,6 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
 }
 
 void DrawGrid(HDC hdc) {
-
-                    // DEBUG statement to print info about entering the drawgrid function
-                    DebugPrint("Entering Drawgrid function....");
-
-
     // CLear the entire window
     RECT clientRect;
     GetClientRect(GetActiveWindow(), &clientRect);
@@ -147,17 +144,21 @@ void DrawGrid(HDC hdc) {
             cellRect.top = j * CELL_SIZE;
             cellRect.right = (i + 1) * CELL_SIZE;
             cellRect.bottom = (j + 1) * CELL_SIZE;
-            
-                     // DEBUG to print cell coords
-                     printf("Cell (%d, %d\n", i, j);
+
+            // Clear the previous player position
+            if (i == playerX && j == playerY) {
+                FillRect(hdc, &cellRect, (HBRUSH)GetStockObject(WHITE_BRUSH));
+            }
 
             // Draw the cells based on game state.
             if (i == playerX && j == playerY) {
                 // Draw the player
-                Rectangle(hdc, cellRect.left, cellRect.top, cellRect.right, cellRect.bottom);
+                // Rectangle(hdc, cellRect.left, cellRect.top, cellRect.right, cellRect.bottom);
 
-                     // DEBUG to print player position
-                     DebugPrint("Drawing the player...");
+                // Draw the player with specified color
+                HBRUSH playerBrush = CreateSolidBrush(playerColor);
+                FillRect(hdc, &cellRect, playerBrush);
+                DeleteObject(playerBrush);
             }
 
             for(int k = 0; k < NUM_CATS; k++) {
@@ -175,10 +176,6 @@ void DrawGrid(HDC hdc) {
             if (i == bombX && j == bombY && hasBomb) {
                 // Draw a bomb
                 Rectangle(hdc, cellRect.left, cellRect.top, cellRect.right, cellRect.bottom);
-            
-                        // DEBUG statement to print info about exiting DrawGrid
-                        DebugPrint("Exiting DrawGrid function....");
-            
             }
         }
     }
@@ -294,4 +291,7 @@ void CALLBACK TimeLimitTimerCallback(HWND hwnd, UINT message, UINT_PTR idEvent, 
 }
 
 // Code is fixed and compile ready, however white screen appears with nothing on screen, more work must be done other than just logic behind game itself.
-//lazy 
+
+
+// Game auto closes when time limit is reached
+// Keep exploring how to easier identify objects for users who launch the program
