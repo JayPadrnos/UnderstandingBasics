@@ -58,7 +58,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         WS_OVERLAPPEDWINDOW,    // Window style
 
         // Size and position
-        CW_USEDEFAULT, CW_USEDEFAULT, GRID_SIZE * CELL_SIZE, GRID_SIZE * CELL_SIZE,
+        CW_USEDEFAULT, CW_USEDEFAULT, GRID_SIZE * CELL_SIZE + 15, GRID_SIZE * CELL_SIZE + 37.5,
 
         NULL,       // Parent window
         NULL,       // Menu
@@ -272,6 +272,8 @@ void CALLBACK CheeseTimerCallback(HWND hwnd, UINT message, UINT_PTR idEvent, DWO
         cheeseX = rand() % GRID_SIZE;
         cheeseY = rand() % GRID_SIZE;
         hasCheese = true;
+        // Redraw the window after updating cheese position
+        InvalidateRect(GetActiveWindow(), NULL, TRUE);
     }
 }
 
@@ -280,6 +282,8 @@ void CALLBACK BombTimerCallback(HWND hwnd, UINT message, UINT_PTR idEvent, DWORD
         bombX = rand() % GRID_SIZE;
         bombY = rand() % GRID_SIZE;
         hasBomb = true;
+        // Redraw window after updating bomb position
+        InvalidateRect(GetActiveWindow(), NULL, TRUE);
     }
 }
 
