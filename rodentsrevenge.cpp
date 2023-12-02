@@ -26,6 +26,7 @@ int score = 0;
 DWORD startTime;
 COLORREF playerColor = RGB(128, 128, 255);  // Blueish grey
 COLORREF cheeseColor = RGB(200, 200, 0); // Yellowish
+COLORREF bombColor = RGB(150, 150, 150); // Grey to black
 
 // Function declarations
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM mParam, LPARAM lParam);
@@ -181,7 +182,10 @@ void DrawGrid(HDC hdc) {
 
             if (i == bombX && j == bombY && hasBomb) {
                 // Draw a bomb
-                Rectangle(hdc, cellRect.left, cellRect.top, cellRect.right, cellRect.bottom);
+                // Rectangle(hdc, cellRect.left, cellRect.top, cellRect.right, cellRect.bottom);
+                HBRUSH bombBrush = CreateSolidBrush(bombColor);
+                FillRect(hdc, &cellRect, bombBrush);
+                DeleteObject(bombBrush);
             }
         }
     }
