@@ -186,6 +186,8 @@ void DrawGrid(HDC hdc) {
                 HBRUSH bombBrush = CreateSolidBrush(bombColor);
                 FillRect(hdc, &cellRect, bombBrush);
                 DeleteObject(bombBrush);
+                // make classes for shapes allowing for code to be saved and take the logic to different ideas for mechanics of game
+                
             }
         }
     }
