@@ -51,4 +51,4 @@ int main() {
     return 0;
 }
 
-// make play again functionable
+// make play again functionable re ask the question and fix it proper as the code you were provided takes out current code
