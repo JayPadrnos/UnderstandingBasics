@@ -4,8 +4,8 @@
 
 using namespace std;
 
-int num1;
-int num2;
+char operation;
+double num1, num2, result;
 int choice;
 
 int main() {
@@ -20,8 +20,13 @@ int main() {
 
     switch (choice) {
         case '+' :
-            cout << num1 << choice << num2 << " = " << answer << "\n";
+             result = num1 + num2;
+             cout << "Result: " << result << endl;
             break;
+        case '/ " :
+            if num2 ! = 0
+            } else {
+            }
     // make display to state which number is bigger than the other
     }
 }
