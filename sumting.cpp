@@ -30,3 +30,5 @@ int main() {
     // make display to state which number is bigger than the other
     }
 }
+
+// this is a cope out until i get home for a simple commit
