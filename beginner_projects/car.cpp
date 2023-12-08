@@ -17,9 +17,10 @@ int main () {
     carObj.brand = "Buick";
     carObj.model = "Lucerne";
     carObj.year = 2006;
+    carObj.history = // add a plugin for history or .hpp
 
     //Print car details
-    cout << carObj.brand << " " << carObj.model << " " << carObj.year << endl;
+    cout << carObj.brand << " " << carObj.model << " " << carObj.year << carObj.history << endl;
             // outputs: Buick Lucerne 2006
     return 0;
 }
