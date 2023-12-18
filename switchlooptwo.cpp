@@ -16,7 +16,7 @@ int main() {
         case '-':
             std::cout << "Result: " << num1 - num2 << std::endl;
             break;
-        case '*';
+        case '*':
             std::cout << "Result: " << num1 * num2 << std::endl;
             break;
         case '/':
