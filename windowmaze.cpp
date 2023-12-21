@@ -1,3 +1,4 @@
+#define UNICODE
 #include <iostream>
 #include <windows.h>
 #include <ctime>
