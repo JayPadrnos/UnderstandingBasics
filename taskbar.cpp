@@ -10,7 +10,7 @@ LRESULT CALLBACK WndProc (HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 int main() {
     // Initialize the application instance
-    HINSTANcE hInstance = GetModuleHandle(NULL);
+    HINSTANCE hInstance = GetModuleHandle(NULL);
 
     // Register the window class
     WNDCLASS wc = { 0 };
@@ -35,10 +35,6 @@ int main() {
         TranslateMessage(&msg);
         DispatchMessage(&msg);
     }
-
-    return static_cast<int>(msg.wParam);
-    )
-
     return static_cast<int>(msg.wParam);
 }
 
@@ -77,7 +73,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
             break;
 
         default:
-            return DefWindowProc(hWnd, message, wParam);
+            return DefWindowProc(hWnd, message, wParam, lParam);
     }
     return 0;
 }
