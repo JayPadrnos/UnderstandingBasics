@@ -311,3 +311,14 @@ void CALLBACK TimeLimitTimerCallback(HWND hwnd, UINT message, UINT_PTR idEvent, 
 
 // Game auto closes when time limit is reached
 // Keep exploring how to easier identify objects for users who launch the program
+
+
+// Add a Timer to the game so the user can see view time left
+// Save player score to a Top 10 position with a 3 Character (ASS) and a scoring***
+// 
+
+// too many RECT spawns after an alloted time with an extended timer
+// scoring system
+
+// OFFSET THE GRID BY AN ODD NUMBER OVER EVEN IN ORDER FOR USER TO SPAWN CENTER
+//

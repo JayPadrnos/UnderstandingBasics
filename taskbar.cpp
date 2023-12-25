@@ -1,5 +1,7 @@
 #include <windows.h>
 
+#define UNICODE
+
 #define ID_FILE_NEW 1
 #define ID_FILE_EXIT 2
 #define ID_EDIT 3
