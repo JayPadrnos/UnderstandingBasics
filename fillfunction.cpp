@@ -12,7 +12,7 @@ int main() {
         }
             */
 
-           const int SIZE = 100;
+           const int SIZE = 99;
            std::string foods[SIZE];
 
            fill(foods, foods + (SIZE/3), "pizza");
