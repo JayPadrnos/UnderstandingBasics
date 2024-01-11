@@ -6,7 +6,7 @@ int main() {
     int size = sizeof(foods)/sizeof(foods[0]);
     std::string temp;
 
-    for(int i = 0 < size; i++){
+    for(int i = 0; i < size; i++){
         std::cout << "Enter a food you like or 'q' to quit #" << i << ": ";
         std::getline(std::cin, foods[i]);
         if(temp == "q"){
