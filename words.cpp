@@ -1,0 +1,11 @@
+/*
+perpendicular
+trapizod
+homunculus
+indubidably
+studious
+confluence
+equinamity
+equilibrium
+copius
+flabergasted*/
