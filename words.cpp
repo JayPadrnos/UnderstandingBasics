@@ -1,3 +1,33 @@
+#include <iostream>
+
+std::string word;
+std::string pronunciation;
+std::string definitions;
+std::string noun;
+std::string noun2;
+std::string adjective;
+std::string adejective2;
+
+
+struct word{};
+
+void getWord(); // get a specific word run in a loop to keep searching words with previous word still displayed
+void getWords(); // get a few random words with definition and such
+void getWordList(); // get a list of the words that are stored within data bank be sure it is organized by alphabetical order
+void rePrint(); // Print out all words with definitions and such that were searched or printed during this runtime session organize in alphabetical order
+void addWord(); // allow for the user to add to the database so that it can be seen in a seperate functions code when added
+
+void getSubject();
+void getWordSubject();
+
+int main(){
+
+return 0;
+}
+
+//
+
+
 /*
 susurrus = "soo sur uhs" = noun = a soft murmuring or rustling sound; whisper.
 
@@ -17,6 +47,38 @@ equinamity
 
 equilibrium = "ee kwuh lib ree uhm" = noun a state of rest or balance due to the equal action of opposing forces = noun2 = equal balance between any powers, influences, etc; equality of effect
 
-copius
+copious = "koh pee uh" = adjective = Large in quantity or number; abundant:plentiful = adjective2 = having or yielding an abundant supply
 
-flabergasted*/
+flabbergasted = "flÆb ga stid" = adjective = informal overcome with astonishment, amazed: astounded.
+
+equestrian
+
+*/
+
+void getWord(){
+
+} // get a specific word run in a loop to keep searching words with previous word still displayed
+
+void getWords(){
+
+} // get a few random words with definition and such
+
+void getWordList(){
+
+} // get a list of the words that are stored within data bank be sure it is organized by alphabetical order
+
+void rePrint(){
+
+} // Print out all words with definitions and such that were searched or printed during this runtime session organize in alphabetical order
+
+void addWord(){
+
+} // allow for the user to add to the database so that it can be seen in a seperate functions code when added
+
+void getSubject(){
+
+}
+
+void getWordSubject(){
+
+}
