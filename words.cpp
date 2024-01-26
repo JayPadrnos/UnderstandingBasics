@@ -51,7 +51,9 @@ copious = "koh pee uh" = adjective = Large in quantity or number; abundant:plent
 
 flabbergasted = "flÆb ga stid" = adjective = informal overcome with astonishment, amazed: astounded.
 
-equestrian
+equestrian = 
+
+gullywasher = "guhl ee wosh er" = noun = a usually short, heavy rainstorm.
 
 */
 
