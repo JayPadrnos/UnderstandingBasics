@@ -55,6 +55,8 @@ equestrian =
 
 gullywasher = "guhl ee wosh er" = noun = a usually short, heavy rainstorm.
 
+emote = "i moht" = verb = to express emotion in a very dramatic or obvious way.
+
 */
 
 void getWord(){
