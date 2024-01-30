@@ -57,6 +57,8 @@ gullywasher = "guhl ee wosh er" = noun = a usually short, heavy rainstorm.
 
 emote = "i moht" = verb = to express emotion in a very dramatic or obvious way.
 
+bailiwick = "bail li wick" = noun = the sphere in which on has superior knowledge or authority : a special domain.
+
 */
 
 void getWord(){
