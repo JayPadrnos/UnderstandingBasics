@@ -70,3 +70,22 @@ public:
         return flag;
     }
 };
+
+// ChatGPT solution to make more efficient
+class Solution {
+public:
+    bool containsDuplicate(const std::vector<int>& nums) {
+        std::unordered_set<int> unique_elements;
+        
+        for (int num : nums) {
+            auto [it, inserted] = unique_elements.emplace(num);
+            if (!inserted) {
+                // Duplicate found
+                return true;
+            }
+        }
+
+        // No duplicates found
+        return false;
+    }
+};

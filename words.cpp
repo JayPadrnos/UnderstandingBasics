@@ -59,6 +59,8 @@ emote = "i moht" = verb = to express emotion in a very dramatic or obvious way.
 
 bailiwick = "bail li wick" = noun = the sphere in which on has superior knowledge or authority : a special domain.
 
+cavil = "kav uhl" = verb = to raise irritating and trivial objections; find fault with unecessarily
+
 */
 
 void getWord(){
