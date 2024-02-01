@@ -61,6 +61,8 @@ bailiwick = "bail li wick" = noun = the sphere in which on has superior knowledg
 
 cavil = "kav uhl" = verb = to raise irritating and trivial objections; find fault with unecessarily
 
+damask = "dam usk" = noun = shiny or thick fabric (as of linen, cotton, silk, or rayon) made with patterns 
+
 */
 
 void getWord(){
