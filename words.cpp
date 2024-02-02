@@ -63,6 +63,8 @@ cavil = "kav uhl" = verb = to raise irritating and trivial objections; find faul
 
 damask = "dam usk" = noun = shiny or thick fabric (as of linen, cotton, silk, or rayon) made with patterns 
 
+stoic = 
+
 */
 
 void getWord(){
