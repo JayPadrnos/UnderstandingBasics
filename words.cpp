@@ -65,6 +65,8 @@ damask = "dam usk" = noun = shiny or thick fabric (as of linen, cotton, silk, or
 
 stoic = 
 
+acquisitive = "uh kwiz uh tiv" = adjective = a desire to own more things 
+
 */
 
 void getWord(){
