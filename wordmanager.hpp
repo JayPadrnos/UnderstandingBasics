@@ -1,5 +1,5 @@
-#ifndef WORD_MANAGEER_HPP
-#define WORD_MANAGEER_HPP
+#ifndef WORD_MANAGER_HPP
+#define WORD_MANAGER_HPP
 
 #include <string>
 #include <unordered_map>
