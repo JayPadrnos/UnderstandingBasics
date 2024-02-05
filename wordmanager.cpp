@@ -1,12 +1,15 @@
 #include "wordmanager.hpp"
 #include <thread>
+#include <chrono>
+#include <fstream>
+#include <iostream>
 
-WordManager::WordManger() {
+WordManager::WordManager() {
     loadWordData();
     startAutosave();
 }
 
-WordManager::WordManger() {
+WordManager::WordManager() {
     saveWordData();
 }
 
@@ -27,7 +30,7 @@ void WordManager::loadWordData() {
     }
 }
 
-void WordManager:saveWordData() const {
+void WordManager::saveWordData() const {
     std::ofstream outputFile(dataFileName);
 
     if (outputFile.is_open()) {
