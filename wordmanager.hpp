@@ -15,6 +15,7 @@ class WordManager {
             std::string noun;
             std::string verb;
             std::string adjective;
+            std::string wordType;
             bool userAdded; // Flag to indicate if added by user
         };
 
