@@ -69,6 +69,18 @@ acquisitive = "uh kwiz uh tiv" = adjective = a desire to own more things
 
 signet = "sig nut" = noun = a seal or used officially to give personal authority to a document in lieu of a signature or the impression made by or as if by such a seal.
 
+absolve = "ub zahlv" = verb = to free someone from a responsibility or commitment or from the consequences of guilt
+
+ambiguity =
+
+imputence =
+
+coquette = 
+
+aloof = 
+
+dandy = 
+
 
 
 */
