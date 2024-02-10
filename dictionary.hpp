@@ -3,22 +3,22 @@
 
 #include <string>
 #include <vector>
+#include <map>
 
 struct Word
 {
     std::string word;
-    std::string type;
-    std::vector<std::string> pronunciation;
-    std::vector<std::string> definitions;
+    std::string pronunciation;
+    std::map<std::string, std::vector<std::string>> typesAndDefinitions;
 };
 
-class Dictionary 
+class Dictionary
 {
     private:
         std::vector<Word> words;
 
     public:
-        void addWord(const std::string& word, const std::string& type, const std::vector<std::string>& pronunciations, const std::vector<std::string>& definitions);
+        void addWord(const std::string&word, const std::string& pronunciation, const std::map<std::string , std::vector<std::string>>& typesAndDefinitions);
         std::vector<Word> getRandomWords(int count) const;
 };
 

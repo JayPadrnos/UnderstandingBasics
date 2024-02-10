@@ -2,12 +2,13 @@
 #include <cstdlib>
 #include <ctime>
 
-void Dictionary::addWord(const std::string& word, const std::string& type, const std::vector<std::string>& pronunciation, const std::vector<std::string>& definitions) {
+void Dictionary::addWord(const std::string& word, const std::string& pronunciation, const std::map<std::string, std::vector<std::string>>& typesAndDefinitions) {
     Word newWord;
     newWord.word = word;
-    newWord.type = type;
     newWord.pronunciation = pronunciation;
-    newWord.definitions = definitions;
+    for (const auto& pair : typesAndDefinitions) {
+        newWord.typesAndDefinitions.insert(pair);
+    }
     words.push_back(newWord);
 }
 
