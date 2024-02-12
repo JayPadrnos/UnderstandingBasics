@@ -121,7 +121,7 @@ dictionary.addWord("absolve", "ub zahlv", {
 }
 
 // lazy friday need to code later 
-// Must fix the code to NOT pick the same word when pulling from the list of words
+//// Must fix the code to NOT pick the same word when pulling from the list of words
 // Add function to see the full list of words
 /// Create an example for it to be shown in sentence use for each type of way the word can be used
 //
