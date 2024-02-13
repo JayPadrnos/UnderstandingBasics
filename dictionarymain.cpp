@@ -86,6 +86,14 @@ dictionary.addWord("absolve", "ub zahlv", {
     {"verb", {"to free someone from a responsibility or commitment or from the consequences of guilt"}}
 });
 
+oscilate
+
+numoultramicroscopicsilcovolcanoconiosis
+
+torsion
+
+
+
 
     // Main loop
     while (true) {
@@ -124,4 +132,5 @@ dictionary.addWord("absolve", "ub zahlv", {
 //// Must fix the code to NOT pick the same word when pulling from the list of words
 // Add function to see the full list of words
 /// Create an example for it to be shown in sentence use for each type of way the word can be used
+//
 //
