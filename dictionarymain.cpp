@@ -92,6 +92,16 @@ numoultramicroscopicsilcovolcanoconiosis
 
 torsion
 
+dispoiled
+
+beggered
+
+conquest
+
+masochism
+
+entice
+
 
 
 
