@@ -102,6 +102,36 @@ masochism
 
 entice
 
+turbid
+
+zither
+
+benall 
+
+poeticising
+
+audacity
+
+chivilary
+
+ludicrous
+
+mythic
+
+exubrant 
+
+melody 
+
+senada 
+
+exuberance 
+
+imbued
+
+sympathy
+
+
+
 
 
 
