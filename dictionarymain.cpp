@@ -177,4 +177,3 @@ hypoglycemia
 // Add function to see the full list of words
 /// Create an example for it to be shown in sentence use for each type of way the word can be used
 //
-//
