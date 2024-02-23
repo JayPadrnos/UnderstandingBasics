@@ -27,3 +27,6 @@ int main() {
 }
 
 // references are pointers with safter measures & vs *
+
+// reading more of C++ crash course.
+
