@@ -26,4 +26,4 @@ int main() {
     return 0;
 }
 
-// First day of work
+// references are pointers with safter measures & vs *
