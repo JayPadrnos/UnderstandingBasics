@@ -1,1 +1,0 @@
-idk what the fuck im doing in life anymore, all i know is my desire to be someone.
