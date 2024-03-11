@@ -6,7 +6,7 @@
 
 using namespace std;
 
-enum {
+enum Rank {
     ACE = 1, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING
 };
 
@@ -103,7 +103,7 @@ class Player {
 
 class Dealer : public Player {
     public:
-    void displayfirstCard() {
+    void displayFirstCard() {
         if (!hand.empty()) {
             cout << "Dealer's Hand: ";
             cout << "Hidden Card, ";
@@ -127,7 +127,7 @@ class BlackJackGame {
         players.push_back(player);
     }
 
-    void dealInitialCard() {
+    void dealInitialCards() {
         for (int i = 0; i < 2; ++i) {
             for (auto& player : players) {
                 player.addToHand(deck.dealCard());
