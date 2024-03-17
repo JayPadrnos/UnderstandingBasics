@@ -14,7 +14,7 @@ public:
         
         // Step 2: Create a max heap of pairs (frequency, element)
         auto comparator = [](const std::pair<int, int>& a, const std::pair<int, int>& b) {
-            return a.first < b.first; // Compare frequencies
+            return a.first > b.first; // Compare frequencies
         };
         std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>, decltype(comparator)> maxHeap(comparator);
         
@@ -35,4 +35,3 @@ public:
         return result;
     }
 };
-//
