@@ -1,3 +1,6 @@
+#include <vector>
+#include <functional>
+
 class Solution {
 public:
     void solve(vector<vector<char>>& board) {
