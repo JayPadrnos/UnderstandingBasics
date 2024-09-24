@@ -27,44 +27,20 @@ void createUserDeck(Deck& deck) {
 }
 
 int main() {
-    Deck mathDeck;
-    createUserDeck(mathDeck);
-    int difficulty;
-    std::cout << "Select difficulty level 1 - 3: ";
-    std::cin >> difficulty;
+    Deck deck;
+    std::string filename;
 
-    Deck filteredDeck = mathDeck.filterByDifficulty(difficulty);
-    UserSession session(filteredDeck, false);
-    session.startTimer();
+    std::cout << "Enter deck filename to load ( or type 'new' to create a new deck): ";
+    std::getline(std::cin, filename);
 
-    while (session.hasNextCard()) {
-        FlashCard card = session.getCurrentCard();
-        std::cout << "Question: " << card.question << std::endl;
-
-        char hintChoice;
-        std::cout << "Do you want a hint? (y/n): ";
-        std::cin >> hintChoice;
-
-        if (hintChoice == 'y') {
-            session.showHint(card);
-        }
-
-        std::string userAnswer;
-        std::cout << "Your answer: ";
-        std::cin >> userAnswer;
-
-        if (userAnswer == card.answer) {
-            std::cout << "Correct!\n";
-            session.nextCard(true);
-        } else {
-            std::cout << "Incorrect. The correct answer was: " << card.answer << "\n";
-            session.nextCard(false);
-        }
+    if (filename != "new") {
+        deck.loadFromFile(filename);
+    } else {
+        createUserDeck(deck);
+        std::cout << "Enter filename to save this deck: ";
+        std::getline(std::cin, filename);
+        deck.saveToFile(filename);
     }
 
-    session.displayProgress();
-    std::cout << "Time Taken: " << session.endTimer() << "seconds." << std::endl;
-    session.reviewIncorrectCards();
-
-    return 0;
+    
 }

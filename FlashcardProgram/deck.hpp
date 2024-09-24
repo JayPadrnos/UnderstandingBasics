@@ -10,9 +10,9 @@ class Deck {
 
     void addCard(const FlashCard& card);
     void shuffleDeck();
-    FlashCard getCard(int index);
-    Deck filterByDifficulty(int difficultyLevel);
-    int size() const;
+    void loadFromFile(const std::string& filename);
+    void saveToFile(const std::string& filename);
+    std::vector<FlashCard> filterByDifficulty(int level);
 };
 
 #endif
