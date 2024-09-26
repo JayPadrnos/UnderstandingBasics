@@ -42,5 +42,38 @@ int main() {
         deck.saveToFile(filename);
     }
 
-    
+    int difficultyLevel;
+    std::cout << "Select difficulty level (1-5): ";
+    std::cin >> difficultyLevel;
+    std::vector<FlashCard> filteredCards = deck.filterByDifficulty(difficultyLevel);
+
+    UserSession session(filteredCards, true);
+    session.start();
+
+    return 0;
+
+void createUserDeck(Deck& deck) {
+    std::string question, answer, hint;
+    int difficulty;
+
+    std::cout << "How many flashcards would you like to create? ";
+    int numCards;
+    std::cin >> numCards;
+    std::cin.ignore();
+
+    for (int i = 0; i < numCards; ++i) {
+        std::cout << "Enter question: ";
+        std::getline(std::cin, question);
+        std::cout << "Enter answer: ";
+        std::getline(std::cin, answer);
+        std::cout << "Enter hint: ";
+        std::getline(std::cin, hint);
+        std::cout << "Enter difficulty level (1-5): ";
+        std::cin >> difficulty;
+        std::cin.ignore()
+
+        FlashCard card(question, answer hint, difficulty);
+        deck.addCard(card);
+    }
+}
 }

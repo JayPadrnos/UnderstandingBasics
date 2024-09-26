@@ -12,7 +12,7 @@ class Deck {
     void shuffleDeck();
     void loadFromFile(const std::string& filename);
     void saveToFile(const std::string& filename);
-    std::vector<FlashCard> filterByDifficulty(int level);
+    std::vector<FlashCard> filterByDifficulty(int);
 };
 
 #endif
