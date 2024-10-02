@@ -2,8 +2,11 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <iostream>
 #include "card.hpp"
 #include "nlohmann/json.hpp"
+
+using json = nlohmann::json;
 
 class Deck {
     private:

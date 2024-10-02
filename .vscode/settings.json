@@ -56,5 +56,6 @@
         "typeinfo": "cpp",
         "*.rh": "cpp",
         "optional": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "enabled"
 }
