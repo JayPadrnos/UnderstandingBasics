@@ -1,0 +1,11 @@
+FlashCardProgram/
+|
+|-- main.cpp
+|-- Deck.cpp
+|-- Deck.hpp
+|-- UserSession.cpp
+|-- UserSession.hpp
+|-- Decks/
+|   |-- Drinks Of Mixology.cpp (Deck for Mixology)
+|   |-- Types Of Liquor.cpp (Deck for Liquor Types)
+|----external/ (external libraries such as JSON changes or any third party to add later)
