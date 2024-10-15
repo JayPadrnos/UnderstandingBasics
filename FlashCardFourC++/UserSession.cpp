@@ -3,40 +3,64 @@
 #include <algorithm>
 #include <ctime>
 #include <cstdlib>
+#include <random>
 
-void UserSession::setDeck (Deck& deck) {
-    this->deck = deck;
+// Start session with the selected deck
+void UserSession::startSession(const Deck& deck) {
+    std::string mode;
+    std::cout << "Choose a mode: shuffle, all, or manual: ";
+    std::getline(std::cin, mode);
+
+    if (mode == "shuffle") {
+        std::vector<Card> shuffledCards = deck.cards;
+        shuffleDeck(shuffledCards);
+        for (const auto& card : shuffledCards) {
+            displayCard(card);
+        }
+    } else if (mode == "all") {
+        displayAllCards(deck);
+    } else if (mode == "manual") {
+        manualCardSelection(deck);
+    } else {
+        std::cout << "Invalid mode.\n";
+    }
+
+    resetSession();
 }
 
-void UserSession::shuffleDeck() {
-    std::srand(static_cast<unsigned int>(std::time(nullptr)));
-    std::random_shuffle(deck.cards.begin(), deck.cards.end());
+// DIsplay a single card (question and answer)
+void UserSession::displayCard(const Card& card) {
+    std::cout << "q: " << card.question << "\n";
+    std::cout << "A: " << card.answer << "\n";
+    std::cout << "Image: " << card.image << "\n";
 }
 
-void UserSession::viewAllCards() {
-    for (int i = 0; i < deck.cards.size(); ++i) {
-        std::cout << i + 1 << ". " << deck.cards[i].question << std::endl;
+// Shuffle the deck randomly
+void UserSession::shuffleDeck(std::vector<Card>& cards) {
+    std::random_device rd;
+    std::mt19937 g(rd());
+    std::shuffle(cards.begin(), cards.end(), g);
+}
+
+void UserSession::displayAllCards(const Deck& deck) {
+    for (const auto& card : deck.cards) {
+        displayCard(card);
     }
 }
 
-void UserSession::pickCard() {
-    std::cout << "Enter the card number you'd like to see: ";
-    int cardIndex;
-    std::cin >> cardIndex;
+void UserSession::manualCardSelection(const Deck& deck) {
+    std::string choice;
+    std::cout << "Enter the card number (1- " << deck.cards.size() << "): ";
+    std::getline(std::cin, choice);
+    int cardIndex = std::stoi(choice) - 1;
 
-    if (cardIndex >= 1 && cardIndex <= deck.cards.size()) {
-        std::cout << "Question: " << deck.cards[cardIndex - 1].question << "\n";
-        std::cout << "Answer: " << deck.cards[cardIndex - 1].answer << "\n";
+    if (cardIndex >= 0 && cardIndex < deck.cards.size()) {
+        displayCard(deck.cards[cardIndex]);
     } else {
         std::cout << "Invalid card number.\n";
     }
 }
 
-void UserSession::run() {
-    for (const auto& card : deck.cards) {
-        std::cout << "Question: " << card.question << "\n";
-        std::cout << "Press Enter to see the answer...\n";
-        std::cin.get();
-        std::cout << "Answer: " << card.answer << "\n\n";
-    }
+void UserSession::resetSession() {
+    std::cout << "Session reset.\n";
 }

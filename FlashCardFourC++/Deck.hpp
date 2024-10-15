@@ -7,12 +7,12 @@
 struct Card {
     std::string question;
     std::string answer;
+    std::string image; // GUI purposes
 };
 
-class Deck {
-    public:
-        std::vector<Card> cards;
-        Deck() = default;
+struct Deck {
+    std::string deckName;
+    std::vector<Card> cards;
 };
 
 Deck loadDrinksOfMixology();

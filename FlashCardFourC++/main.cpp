@@ -1,68 +1,82 @@
-#include "Deck.hpp"
-#include "UserSession.hpp"
 #include <iostream>
-#include <string>
 #include <vector>
-#include <ctime>
-#include <cstdlib>
+#include <string>
+#include <algorithm> // for random_shuffle
+#include "UserSession.hpp"
+#include "drinks_of_mixology.hpp"
+#include "types_of_liquor.hpp"
+#include "Card.hpp"
 
 void displayMenu() {
-    std::cout << "Flashcard Program\n";
-    std::cout << "1. Drinks of Mixology\n";
-    std::cout << "2. Types of Liquor\n";
-    std::cout << "Enter the number or name of the deck you want to choose: ";
-}
-
-void displayDeckOptions() {
-    std::cout << "\nDeck Options:\n";
-    std::cout << "1. Shuffle deck\n";
-    std::cout << "2. See all cards\n";
-    std::cout << "3. Pick a card manually\n";
-    std::cout << "4. Reset deck\n";
-    std::cout << "\nEnter your choice: ";
+    std::cout << "Welcome to the Flashcard Program!" << std::endl;
+    std::cout << "Choose a deck to begin:" << std::endl;
+    std::cout << "1. Drinks of Mixology" << std::endl;
+    std::cout << "2. Types of Liquor" << std::endl;
+    std::cout << "3. Exit" << std::endl;
 }
 
 int main() {
-    std::vector<Deck> availableDecks = {loadDrinksOfMixology(), loadTypesOfLiquor()};
-    UserSession session;
+    bool running = true;
 
-    std::string userInput;
-    while (true) {
+    while (running) {
         displayMenu();
-        std::getline(std::cin, userInput);
 
-        // Deck selection
-        Deck* chosenDeck = nullptr;
-        if (userInput == "1" || userInput == "Drinks" || userInput == "Mixology" || userInput == "Drinks of Mixology") {
-            chosenDeck = & availableDecks[0];
-        } else if (userInput == "2" || userInput == "Liquor" || userInput == "Types of Liquor") {
-            chosenDeck = &availableDecks[1];
+        int deckChoice;
+        std::cin >> deckChoice;
+
+        std::vector<Card> selectedDeck;
+        std::string deckName;
+
+        switch (deckChoice) {
+            case 1:
+                selectedDeck = loadDrinksOfMixologyDeck();
+                deckName = "Drinks of Mixology";
+                break;
+            case 2:
+                selectedDeck = loadTypesOfLiquorDeck();
+                deckName = "Types of Liquor";
+                break;
+            case 3:
+                std::cout << "Exiting program..." << std::endl;
+                running = false;
+                continue;
+            default:
+                std::cout << "Invalid choice. Please select a valid deck." << std::endl;
+                continue;
         }
 
-        if (chosenDeck){
-            session.setDeck(*chosenDeck);
+        if (!selectedDeck.empty()) {
+            UserSession session(selectedDeck);
 
-            // Deck options
-            while (true) {
-                displayDeckOptions();
-                std::getline(std::cin, userInput);
+            std::cout << "\nDeck \"" << deckName << "\" loaded!" << std::endl;
+            std::cout << "Would you like to (1) shuffle deck, (2) browse cards, or (3) pick a card by number?" << std::endl;
+            int action;
+            std::cin >> action;
 
-                if (userInput == "1") { // Shuffle Deck
+            switch (action) {
+                case 1:
                     session.shuffleDeck();
-                    session.run();
-                } else if (userInput == "2") { // See all cards
-                    session.viewAllCards();
-                } else if (userInput == "3") { // Pick a card manually
-                    session.pickCard();
-                } else if (userInput == "4") { // Reset deck
+                    session.quiz(); // Start quiz in shuffled order
                     break;
-                } else {
-                    std::cout << "Invalid choice. Try again.\n";
+                case 2:
+                    session.browseDeck(); // Browse all cards
+                    break;
+                case 3: {
+                    std::cout << "Enter card number to view: ";
+                    int cardNum;
+                    std::cin >> cardNum;
+                    session.pickCard(cardNum); // Manually pick a card
+                    break;
                 }
+                default:
+                    std::cout << "Invalid action. Please choose a valid option." << std::endl;
             }
+
+            std::cout << "Your score: " << session.getFinalScore() << " out of " << session.getTotalCards() << "!" << std::endl;
         } else {
-            std::cout << "Invalid deck selection. Please try again.\n";
+            std::cout << "Failed to load the deck." << std::endl;
         }
     }
+
     return 0;
 }

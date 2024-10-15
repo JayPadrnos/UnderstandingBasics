@@ -4,14 +4,16 @@
 #include "Deck.hpp"
 
 class UserSession {
-    private:
-        Deck deck;
     public:
-        void setDeck (Deck& deck);
-        void shuffleDeck();
-        void viewAllCards();
-        void pickCard();
-        void run(); // Simulates going through the deck
+        void startSession(const Deck& deck);
+
+    private:
+        void displayCard(const Card& card);
+        void shuffleDeck(std::vector<Card>& card);
+        void displayAllCards(const Deck& deck);
+        void manualCardSelection(const Deck& deck);
+        void resetSession();
 };
+
 
 #endif // USERSESSION_HPP
