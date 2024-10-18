@@ -1,14 +1,14 @@
-#include  "UserSession.hpp"
+#include "UserSession.hpp"
 #include <iostream>
 #include <algorithm>
-#include <ctime>
-#include <cstdlib>
 #include <random>
+#include <string>
 
 // Start session with the selected deck
 void UserSession::startSession(const Deck& deck) {
     std::string mode;
     std::cout << "Choose a mode: shuffle, all, or manual: ";
+    std::cin.ignore();
     std::getline(std::cin, mode);
 
     if (mode == "shuffle") {
@@ -28,11 +28,18 @@ void UserSession::startSession(const Deck& deck) {
     resetSession();
 }
 
-// DIsplay a single card (question and answer)
+// Display a single card (question, answer, and image)
 void UserSession::displayCard(const Card& card) {
-    std::cout << "q: " << card.question << "\n";
-    std::cout << "A: " << card.answer << "\n";
-    std::cout << "Image: " << card.image << "\n";
+    std::cout << "Question: " << card.question << "\n";
+    std::cout << "Answer: " << card.answer << "\n";
+    if (!card.image.empty()) {
+        std::cout << "Image: " << card.image << "\n";
+    } else {
+        std::cout << "No image available.\n";
+    }
+    std::cout << "Glass: " << card.glass << "\n";
+    std::cout << "Garnish: " << card.garnish << "\n";
+    std::cout << "Preparation: " << card.preparation << "\n";
 }
 
 // Shuffle the deck randomly
@@ -42,12 +49,14 @@ void UserSession::shuffleDeck(std::vector<Card>& cards) {
     std::shuffle(cards.begin(), cards.end(), g);
 }
 
+// Display all cards in the deck
 void UserSession::displayAllCards(const Deck& deck) {
     for (const auto& card : deck.cards) {
         displayCard(card);
     }
 }
 
+// Manually select a card from the deck
 void UserSession::manualCardSelection(const Deck& deck) {
     std::string choice;
     std::cout << "Enter the card number (1- " << deck.cards.size() << "): ";
@@ -61,6 +70,7 @@ void UserSession::manualCardSelection(const Deck& deck) {
     }
 }
 
+// Reset the session (this can be extended for more functionality)
 void UserSession::resetSession() {
     std::cout << "Session reset.\n";
 }

@@ -4,18 +4,19 @@
 #include <string>
 
 class Card {
-    public:
-        std::string question;
-        std::string answer;
-        std::string glass;
-        std::string garnish;
-        std::string preparation;
+public:
+    std::string question;
+    std::string answer;
+    std::string glass;
+    std::string garnish;
+    std::string preparation;
+    std::string image; // Image field for GUI purposes
 
-        // Constructor
-        Card(const std::string& q, const std::string& ans, const std::string& glassType, const std::string& garnishType, const std::string& prepMethod);
+    // Constructor
+    Card(const std::string& q, const std::string& ans, const std::string& glassType, const std::string& garnishType, const std::string& prepMethod, const std::string& img = "");
 
-        // Function to display card details 
-        void displayCard() const;
+    // Method to display card details (for debugging or use in session)
+    void displayCard() const;
 };
 
 #endif

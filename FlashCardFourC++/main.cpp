@@ -1,11 +1,6 @@
 #include <iostream>
-#include <vector>
-#include <string>
-#include <algorithm> // for random_shuffle
 #include "UserSession.hpp"
-#include "drinks_of_mixology.hpp"
-#include "types_of_liquor.hpp"
-#include "Card.hpp"
+#include "Deck.hpp"
 
 void displayMenu() {
     std::cout << "Welcome to the Flashcard Program!" << std::endl;
@@ -24,7 +19,7 @@ int main() {
         int deckChoice;
         std::cin >> deckChoice;
 
-        std::vector<Card> selectedDeck;
+        Deck selectedDeck("", {});
         std::string deckName;
 
         switch (deckChoice) {
@@ -45,34 +40,10 @@ int main() {
                 continue;
         }
 
-        if (!selectedDeck.empty()) {
-            UserSession session(selectedDeck);
-
+        if (!selectedDeck.cards.empty()) {
+            UserSession session;
             std::cout << "\nDeck \"" << deckName << "\" loaded!" << std::endl;
-            std::cout << "Would you like to (1) shuffle deck, (2) browse cards, or (3) pick a card by number?" << std::endl;
-            int action;
-            std::cin >> action;
-
-            switch (action) {
-                case 1:
-                    session.shuffleDeck();
-                    session.quiz(); // Start quiz in shuffled order
-                    break;
-                case 2:
-                    session.browseDeck(); // Browse all cards
-                    break;
-                case 3: {
-                    std::cout << "Enter card number to view: ";
-                    int cardNum;
-                    std::cin >> cardNum;
-                    session.pickCard(cardNum); // Manually pick a card
-                    break;
-                }
-                default:
-                    std::cout << "Invalid action. Please choose a valid option." << std::endl;
-            }
-
-            std::cout << "Your score: " << session.getFinalScore() << " out of " << session.getTotalCards() << "!" << std::endl;
+            session.startSession(selectedDeck);
         } else {
             std::cout << "Failed to load the deck." << std::endl;
         }

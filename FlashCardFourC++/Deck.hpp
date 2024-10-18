@@ -2,20 +2,17 @@
 #define DECK_HPP
 
 #include <vector>
-#include <string>
+#include "Card.hpp"
 
-struct Card {
-    std::string question;
-    std::string answer;
-    std::string image; // GUI purposes
-};
-
-struct Deck {
+class Deck {
+public:
     std::string deckName;
     std::vector<Card> cards;
+
+    Deck(const std::string& name, const std::vector<Card>& cardList);
 };
 
-Deck loadDrinksOfMixology();
-Deck loadTypesOfLiquor();
+Deck loadDrinksOfMixologyDeck();
+Deck loadTypesOfLiquorDeck();
 
 #endif // DECK_HPP
