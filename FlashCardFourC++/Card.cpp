@@ -6,7 +6,7 @@ Card::Card(const std::string& q, const std::string& ans, const std::string& glas
     : question(q), answer(ans), glass(glassType), garnish(garnishType), preparation(prepMethod), image(img) {}
 
 // Method to display card details (use for debugging or during session)
-void Card::displayCard() const {
+inline void Card::displayCard() const {
     std::cout << "Question: " << question << std::endl;
     std::cout << "Answer: " << answer << std::endl;
     std::cout << "Glass: " << glass << std::endl;
@@ -18,3 +18,4 @@ void Card::displayCard() const {
         std::cout << "No image available." << std::endl;
     }
 }
+//added?
