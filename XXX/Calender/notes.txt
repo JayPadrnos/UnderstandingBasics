@@ -1,3 +1,5 @@
+20024-12-20: Energy was completely out from work 5 days off now though
 2024-12-17: Calender Notes Created Work 10 hours for 300 days of the year and there is 3000 hours to Mastery 3 years of 14 hour days to Master a Skill
 2024-12-18: Need to work towards improving or another version of code
 2024-12-19: Add a prompt for the current day above all options, be able to display all Notes in chronological order. *display a clock as well so that each note can be time stamped
+2024-12-20: Just check up on current debugging projects
