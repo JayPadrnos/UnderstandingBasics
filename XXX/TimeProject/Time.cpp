@@ -161,3 +161,11 @@ class Calender {
                 }
             }
         }
+
+
+// ways to add multiple notes to the program where you can view multiple notes for each day in numbered order
+// add a way for notes to be sorted into levels of urgency/importance
+// when at complete state have a voice recording button to add notes to days, and even choose days to add said note to
+// Daily habit reminder
+// Keep track of time on certain apps (runtime)
+// List daily habit reminders
