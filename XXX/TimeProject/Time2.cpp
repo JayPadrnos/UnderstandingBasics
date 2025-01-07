@@ -136,4 +136,57 @@ class Calender {
         }
 
         // Display welcome message with time details
+        void displayWelcomMessage() {
+            std::string friendlyDate = getFriendlyDate();
+            int hoursLeft = getTimeLeftInYearHours();
+            std::cout << "\n-- Welcome to the Time Management Program ---\n";
+            std::cout << "Today's Date: " << friendlyDate << "\n";
+            std::cout << "Time left in the year: " << hoursLeft << "hours.\n";
+            std::cout << "-------------------------------------------------\n";
+        }
+};
+
+int main() {
+    Calendar calendar;
+    calendar.loadNotes("notes.txt");
+    calendar.displayWelcomeMessage(); // Display the current date and time left in year
+
+    int choice, year, month, day;
+    std::string notes;
+
+    while (true) {
+        std::cout << "\n1. Add/Edit Note\n2. View Note\n3. Delete Note\n4. Save Notes\n5. Exit\n";
+        std::cout << "Enter choice: ";
+        std::cin >> choice;
+
+        switch (choice) {
+            case 1:
+                std::cout << "Enter date (YYYY MM DD): ";
+                std::cin >> year >> month >> day;
+                std::cin.ignore();
+                std::cout << "Enter note: ";
+                std::getline(std::cin, note);
+                calendar.addNote(year, month, day, note);
+                break;
+            case 2:
+                std::cout << "Enter date (YYYY MM DD): ";
+                std::cin >> year >> month >> day;
+                calendar.viewNote(year, month, day);
+                break;
+            case 3:
+                std::cout << "Enter date (YYYY MM DD): ";
+                std::cin >> year >> month >> day;
+                calendar.deleteNote(year, month, day);
+                break;
+            case 4:
+                calendar.saveNotes("notes.txt");
+                break;
+            case 5:
+                calendar.saveNotes("notes.txt"); // Save before exiting
+                std::cout << "Goodbye!\n";
+                return 0;
+            default:
+                std::cout << "Invalid choice! Please try again later.\n";
+        }
+    }
 }
