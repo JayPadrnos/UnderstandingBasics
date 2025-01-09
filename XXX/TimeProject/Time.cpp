@@ -169,3 +169,5 @@ class Calender {
 // Daily habit reminder
 // Keep track of time on certain apps (runtime)
 // List daily habit reminders
+// Setup tasks due dates 
+// Login reminders of tasks due and date 
