@@ -7,7 +7,7 @@
 #include <ctime>
 #include <chrono>
 
-class Calender {
+class Calendar {
     private:
         std::map<std::string, std::string> notes;
 
@@ -44,7 +44,7 @@ class Calender {
         std::string getFriendlyDate() {
             auto now = std::chrono::system_clock::now();
             std::time_t currentTime = std::chrono::system_clock::to_time_t(now);
-            std::tm localTime = *localTime = *std::localtime(&currentTime);
+            std::tm localTime = *std::localtime(&currentTime);
 
             const char* months[] = {"January", "Febuary", "March", "April", "May", "June",
                                     "July", "August", "September", "October", "November", "December" };
@@ -80,7 +80,7 @@ class Calender {
       public:
         // Add or edit a note
         void addNote(int year, int month, int day, const std::string& note) {
-            if (!isValidDate(year, month, day)) {
+            if (!inValidDate(year, month, day)) {
                 std::cout << "Invalid date!\n";
                 return;
             }
@@ -120,7 +120,7 @@ class Calender {
         }
 
         // Load notes from a file
-        void LoadNotes(const std::string& filename) {
+        void loadNotes(const std::string& filename) {
             std::ifstream file(filename);
             std::string line, date, note;
             while (std::getline(file, line)) {
@@ -136,7 +136,7 @@ class Calender {
         }
 
         // Display welcome message with time details
-        void displayWelcomMessage() {
+        void displayWelcomeMessage() {
             std::string friendlyDate = getFriendlyDate();
             int hoursLeft = getTimeLeftInYearHours();
             std::cout << "\n-- Welcome to the Time Management Program ---\n";
@@ -152,7 +152,7 @@ int main() {
     calendar.displayWelcomeMessage(); // Display the current date and time left in year
 
     int choice, year, month, day;
-    std::string notes;
+    std::string note;
 
     while (true) {
         std::cout << "\n1. Add/Edit Note\n2. View Note\n3. Delete Note\n4. Save Notes\n5. Exit\n";
