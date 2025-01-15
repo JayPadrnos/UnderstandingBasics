@@ -141,7 +141,7 @@ class Calendar {
             int hoursLeft = getTimeLeftInYearHours();
             std::cout << "\n-- Welcome to the Time Management Program ---\n";
             std::cout << "Today's Date: " << friendlyDate << "\n";
-            std::cout << "Time left in the year: " << hoursLeft << "hours.\n";
+            std::cout << "Time left in the year: " << hoursLeft << " hours.\n";
             std::cout << "-------------------------------------------------\n";
         }
 };
@@ -191,4 +191,8 @@ int main() {
     }
 }
 
-// Fix bugs
+// Fix bugs or known issues
+// when letters are put in for the date asked by option 1. Add Note
+// a while loop doesnt stop
+
+//  moon cycles and planetarycycles
