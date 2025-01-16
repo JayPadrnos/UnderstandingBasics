@@ -196,3 +196,4 @@ int main() {
 // a while loop doesnt stop
 
 //  moon cycles and planetarycycles
+// napolean clock??
