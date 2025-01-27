@@ -195,7 +195,9 @@ int main() {
 // when letters are put in for the date asked by option 1. Add Note
 // a while loop doesnt stop
 
-//  moon cycles and planetarycycles
-// napolean clock??
+//  moon cycles and planetary cycles
+// napoleon clock??
 
 // Check marks to click on or off for completed tasks?
+
+// Functions of the "Napoleon CLock"
