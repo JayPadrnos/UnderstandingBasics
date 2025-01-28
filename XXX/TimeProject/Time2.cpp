@@ -201,3 +201,5 @@ int main() {
 // Check marks to click on or off for completed tasks?
 
 // Functions of the "Napoleon CLock"
+// Timer, Alarm, and ways of Reminders.
+// Puzzles? ways to find hidden inputs and or secret messages or functions?
