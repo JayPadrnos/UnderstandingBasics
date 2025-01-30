@@ -203,3 +203,7 @@ int main() {
 // Functions of the "Napoleon CLock"
 // Timer, Alarm, and ways of Reminders.
 // Puzzles? ways to find hidden inputs and or secret messages or functions?
+
+// Alert the user of the tasks needed to be done for the day if there is any notes on it
+// way for program to recognize key words for shorter frame of reference such as if the note is
+// "need to fix framework of function A " the task reminder should be along the lines of Function A framework repair
