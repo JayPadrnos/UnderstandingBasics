@@ -207,3 +207,5 @@ int main() {
 // Alert the user of the tasks needed to be done for the day if there is any notes on it
 // way for program to recognize key words for shorter frame of reference such as if the note is
 // "need to fix framework of function A " the task reminder should be along the lines of Function A framework repair
+
+//
