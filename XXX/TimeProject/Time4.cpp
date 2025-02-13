@@ -305,10 +305,3 @@ class Calendar {
             return 1;
         }
     }
-
-    // Add Lunar cycle to this file and program with updated ver compile 3.1
-    // Add Temperature of the da as well?
-
-    // AI retrieval system??
-
-    // Song of day set when you launch program so you can set your alarm playlist.
