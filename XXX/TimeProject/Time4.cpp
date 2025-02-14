@@ -305,3 +305,8 @@ class Calendar {
             return 1;
         }
     }
+
+
+// fix illumination scaling as it does not match the moon phase 
+
+// 
