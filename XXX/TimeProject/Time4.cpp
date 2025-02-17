@@ -309,4 +309,6 @@ class Calendar {
 
 // fix illumination scaling as it does not match the moon phase 
 
-// 
+// Temp F C
+
+// seems like a temp function will need to pull the data from elsewhere to remain accurate.
