@@ -192,7 +192,7 @@ int main() {
 }
 
 // Fix bugs or known issues
-// when letters are put in for the date asked by option 1. Add Note
+/// when letters are put in for the date asked by option 1. Add Note
 // a while loop doesnt stop
 
 //  moon cycles and planetary cycles
