@@ -217,3 +217,5 @@ int main() {
 // Sickness got me out of it
 
 // Back door that would allow only the creator of the system back in even if live launched for another system>>
+// find something to respark that innovation, passion, creative want.
+// make a program that is the classic 1 or 5 people to save train senario but only tell the user two options while having extra options hidden
