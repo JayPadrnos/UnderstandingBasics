@@ -221,3 +221,7 @@ int main() {
 // make a program that is the classic 1 or 5 people to save train senario but only tell the user two options while having extra options hidden
 
 // able to login to system from a "master device"
+
+// Sickness is getting old to me 
+// concentration is at an all time low
+// build simple game with ui and simple back end like the turkey punch mini game from doom 3
