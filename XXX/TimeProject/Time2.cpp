@@ -225,3 +225,5 @@ int main() {
 // Sickness is getting old to me 
 // concentration is at an all time low
 // build simple game with ui and simple back end like the turkey punch mini game from doom 3
+
+// The world is at your finger tips and you are too stupid to figure out how to use it
