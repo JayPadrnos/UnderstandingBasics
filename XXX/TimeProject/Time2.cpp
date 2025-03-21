@@ -227,3 +227,5 @@ int main() {
 // build simple game with ui and simple back end like the turkey punch mini game from doom 3
 
 // The world is at your finger tips and you are too stupid to figure out how to use it
+
+// be able to have your messages vocally reminded to you over the top of the music quieted down
