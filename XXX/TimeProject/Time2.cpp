@@ -231,3 +231,5 @@ int main() {
 // be able to have your messages vocally reminded to you over the top of the music quieted down
 
 // breathing exercises use small visual to encorperate timing of exercise or sound to do so
+
+// pnuemonia sucks
