@@ -233,3 +233,5 @@ int main() {
 // breathing exercises use small visual to encorperate timing of exercise or sound to do so
 
 // pnuemonia sucks
+
+// music program plugins???
