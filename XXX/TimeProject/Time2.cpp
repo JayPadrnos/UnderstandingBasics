@@ -237,3 +237,5 @@ int main() {
 // music program plugins???
 
 // still sick
+
+//dont have energy to type without immense pain in forearms
