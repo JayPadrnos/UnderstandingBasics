@@ -241,3 +241,5 @@ int main() {
 //dont have energy to type without immense pain in forearms
 
 // been a while online the sicknesss had taken hold healing fine now lungs still trashed
+
+// dizzy effect today
