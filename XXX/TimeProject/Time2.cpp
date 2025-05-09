@@ -229,6 +229,7 @@ int main() {
 // The world is at your finger tips and you are too stupid to figure out how to use it
 
 // be able to have your messages vocally reminded to you over the top of the music quieted down
+// have message played before song plays or after song is finished for better immersion in the music
 
 // breathing exercises use small visual to encorperate timing of exercise or sound to do so
 
