@@ -5,4 +5,7 @@
 
 // 
 
-//  re read
+//  re read 
+
+// your own shell will help build bigger projects as you will be able to generate your own commands and better interpert bugs and errors as 
+// they will be set as your own perameters
