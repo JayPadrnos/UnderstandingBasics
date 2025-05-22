@@ -9,3 +9,5 @@
 
 // your own shell will help build bigger projects as you will be able to generate your own commands and better interpert bugs and errors as 
 // they will be set as your own perameters
+
+// game where enemies adapt based off what the player plays like or does
