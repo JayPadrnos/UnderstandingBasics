@@ -78,7 +78,7 @@ class Shell {
                     }
                 };
 
-                commands["log"] = [&](const auto&& args) {
+                commands["log"] = [&](const auto& args) {
                     std::ofstream logFile("shell.log", std::ios::app);
                     for (const auto& word : args) logFile << word << " ";
                     logFile << "\n";
