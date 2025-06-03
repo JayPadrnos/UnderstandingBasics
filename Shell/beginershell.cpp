@@ -2,7 +2,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
-#include <unordererd_map>
+#include <unordered_map>
 #include <functional>
 #include <cstdlib>
 #include <filesystem>
@@ -36,7 +36,7 @@ public:
 
             std::vector<std::string> args;
             std::string arg;
-            while (iss >> arg) arg.push_back(arg);
+            while (iss >> arg) args.push_back(arg);
 
             executeCommand(cmd, args);
         }
@@ -114,7 +114,7 @@ private:
                 std::string cmd;
                 iss >> cmd;
 
-                std::vector<std::String> lineArgs;
+                std::vector<std::string> lineArgs;
                 std::string word;
                 while (iss >> word) lineArgs.push_back(word);
 
