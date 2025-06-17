@@ -168,3 +168,5 @@ int main() {
 }
 
 // save to file syntaxed
+
+// we will be adding command history next
