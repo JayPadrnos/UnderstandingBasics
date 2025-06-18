@@ -170,3 +170,5 @@ int main() {
 // save to file syntaxed
 
 // we will be adding command history next
+
+// look above for current log, 6/17
