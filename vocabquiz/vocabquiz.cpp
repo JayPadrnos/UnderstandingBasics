@@ -4,3 +4,5 @@ struct VocabItem {
     std::string pronunciation;
     std::string exampleSentence;
 }
+
+// struct for japanese language needs work and other questionare for archetype
