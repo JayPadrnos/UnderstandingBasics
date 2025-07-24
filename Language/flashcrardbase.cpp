@@ -49,5 +49,5 @@ int main() {
     };
 
     printKanaGrid(kanaGrid);
-    reutrn 0;
+    return 0;
 }
