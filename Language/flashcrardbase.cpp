@@ -51,3 +51,5 @@ int main() {
     printKanaGrid(kanaGrid);
     return 0;
 }
+
+// check compile compatible and add click for sound maybe?
