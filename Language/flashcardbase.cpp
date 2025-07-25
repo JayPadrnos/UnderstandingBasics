@@ -52,4 +52,5 @@ int main() {
     return 0;
 }
 
-// check compile compatible and add click for sound maybe?
+// check compile compatible and add click for sound
+// line up UTF-8 so that terminal will display the proper language
