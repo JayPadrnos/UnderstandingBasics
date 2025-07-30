@@ -1,6 +1,11 @@
 #include <iostream>
 #include <vector>
 #include <iomanip>
+#include <limits>
+
+#ifdef _WIN32
+#include <windows.h>
+#endif
 
 struct Kana {
     std::string romaji;
@@ -34,6 +39,11 @@ void printKanaGrid(const Grid& kanaGrid) {
 }
 
 int main() {
+#ifdef _WIN32
+    // Enable UTF-8 output in Windows console
+    SetConsoleOutputCP(CP_UTF8);
+#endif
+
     Grid kanaGrid = {
         { {"a", "あ", "ア"}, {"i", "い", "イ"}, {"u", "う", "ウ"}, {"e", "え", "エ"}, {"o", "お", "オ"} },
         { {"ka", "か", "カ"}, {"ki", "き", "キ"}, {"ku", "く", "ク"}, {"ke", "け", "ケ"}, {"ko", "こ", "コ"} },
@@ -49,6 +59,11 @@ int main() {
     };
 
     printKanaGrid(kanaGrid);
+
+    std::cout << "\nPress Enter to exit...";
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
+
     return 0;
 }
 
