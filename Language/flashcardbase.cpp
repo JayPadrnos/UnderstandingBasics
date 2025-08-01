@@ -71,3 +71,5 @@ int main() {
 // line up UTF-8 so that terminal will display the proper language
 // ?? Storm
 // need something interactive for quizing or flash card esq
+
+// Ask player what each symbol is setup for Hira and kata
