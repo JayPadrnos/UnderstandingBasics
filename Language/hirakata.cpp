@@ -226,3 +226,10 @@ void showTopTimes() {
         }
     }
 }
+
+
+// remove the small characters from the guesses
+// add gi ga go pi pe po esq characters 
+// certain answers were marked wrong when it was correct i is the apperent one may be mixed with small version
+// add a correct out of how many were questioned so that user can see at end
+// have the list of hira and kata displayed above menu when launched vs having an option to display them keep format if possible or clean it up some
