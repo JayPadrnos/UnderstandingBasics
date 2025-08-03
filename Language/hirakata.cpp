@@ -228,8 +228,17 @@ void showTopTimes() {
 }
 
 
-// remove the small characters from the guesses
+// remove the small characters from the guesses KEEP them in he list
 // add gi ga go pi pe po esq characters 
 // certain answers were marked wrong when it was correct i is the apperent one may be mixed with small version
 // add a correct out of how many were questioned so that user can see at end
 // have the list of hira and kata displayed above menu when launched vs having an option to display them keep format if possible or clean it up some
+
+
+// the times are not saving if the program is closed
+// settings do not save if program is closed
+//is it possible to only change font size on the text of the question being asked so that user can see larger font of the hira and kata
+// add a reverse mode in option so that the romaji is displayed vs the symbol and the symbol needs to be entered
+
+// Expert difficulty so that you can have either on of the symbols displayed and the hira and kata are not displayed together, so that you can test the user on knowledge of all
+// add an option or mode to just have hira or kata displayed add a fail safe if bot options are on
