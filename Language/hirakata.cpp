@@ -243,5 +243,4 @@ void showTopTimes() {
 // Expert difficulty so that you can have either on of the symbols displayed and the hira and kata are not displayed together, so that you can test the user on knowledge of all
 // add an option or mode to just have hira or kata displayed add a fail safe if bot options are on
 
-
-// g
+// huh
