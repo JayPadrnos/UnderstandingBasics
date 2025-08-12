@@ -18,7 +18,8 @@ using namespace std;
 struct Flashcard {
     string hiragana;
     string katakana;
-    string romaji;
+    string romaji;      // full name for display (may include " (small)")
+    string quizRomaji;  // simplified input for quiz
 };
 
 // Enum for difficulty
@@ -37,42 +38,42 @@ struct Modes {
 // Global constants for flashcards
 vector<Flashcard> flashcards = {
     // Vowels
-    {"あ", "ア", "a"}, {"い", "イ", "i"}, {"う", "ウ", "u"}, {"え", "エ", "e"}, {"お", "オ", "o"},
+    {"あ", "ア", "a", "a"}, {"い", "イ", "i", "i"}, {"う", "ウ", "u", "u"}, {"え", "エ", "e", "e"}, {"お", "オ", "o", "o"},
 
     // K consonant
-    {"か", "カ", "ka"}, {"き", "キ", "ki"}, {"く", "ク", "ku"}, {"け", "ケ", "ke"}, {"こ", "コ", "ko"},
+    {"か", "カ", "ka", "ka"}, {"き", "キ", "ki", "ki"}, {"く", "ク", "ku", "ku"}, {"け", "ケ", "ke", "ke"}, {"こ", "コ", "ko", "ko"},
 
     // S consonant
-    {"さ", "サ", "sa"}, {"し", "シ", "shi"}, {"す", "ス", "su"}, {"せ", "セ", "se"}, {"そ", "ソ", "so"},
+    {"さ", "サ", "sa", "sa"}, {"し", "シ", "shi", "shi"}, {"す", "ス", "su", "su"}, {"せ", "セ", "se", "se"}, {"そ", "ソ", "so", "so"},
 
     // T consonant
-    {"た", "タ", "ta"}, {"ち", "チ", "chi"}, {"つ", "ツ", "tsu"}, {"て", "テ", "te"}, {"と", "ト", "to"},
+    {"た", "タ", "ta", "ta"}, {"ち", "チ", "chi", "chi"}, {"つ", "ツ", "tsu", "tsu"}, {"て", "テ", "te", "te"}, {"と", "ト", "to", "to"},
 
     // N consonant
-    {"な", "ナ", "na"}, {"に", "ニ", "ni"}, {"ぬ", "ヌ", "nu"}, {"ね", "ネ", "ne"}, {"の", "ノ", "no"},
+    {"な", "ナ", "na", "na"}, {"に", "ニ", "ni", "ni"}, {"ぬ", "ヌ", "nu", "nu"}, {"ね", "ネ", "ne", "ne"}, {"の", "ノ", "no", "no"},
 
     // H consonant
-    {"は", "ハ", "ha"}, {"ひ", "ヒ", "hi"}, {"ふ", "フ", "fu"}, {"へ", "ヘ", "he"}, {"ほ", "ホ", "ho"},
+    {"は", "ハ", "ha", "ha"}, {"ひ", "ヒ", "hi", "hi"}, {"ふ", "フ", "fu", "fu"}, {"へ", "ヘ", "he", "he"}, {"ほ", "ホ", "ho", "ho"},
 
     // M consonant
-    {"ま", "マ", "ma"}, {"み", "ミ", "mi"}, {"む", "ム", "mu"}, {"め", "メ", "me"}, {"も", "モ", "mo"},
+    {"ま", "マ", "ma", "ma"}, {"み", "ミ", "mi", "mi"}, {"む", "ム", "mu", "mu"}, {"め", "メ", "me", "me"}, {"も", "モ", "mo", "mo"},
 
     // Y consonant
-    {"や", "ヤ", "ya"}, {"ゆ", "ユ", "yu"}, {"よ", "ヨ", "yo"},
+    {"や", "ヤ", "ya", "ya"}, {"ゆ", "ユ", "yu", "yu"}, {"よ", "ヨ", "yo", "yo"},
 
     // R consonant
-    {"ら", "ラ", "ra"}, {"り", "リ", "ri"}, {"る", "ル", "ru"}, {"れ", "レ", "re"}, {"ろ", "ロ", "ro"},
+    {"ら", "ラ", "ra", "ra"}, {"り", "リ", "ri", "ri"}, {"る", "ル", "ru", "ru"}, {"れ", "レ", "re", "re"}, {"ろ", "ロ", "ro", "ro"},
 
     // W consonant
-    {"わ", "ワ", "wa"}, {"を", "ヲ", "wo"},
+    {"わ", "ワ", "wa", "wa"}, {"を", "ヲ", "wo", "wo"},
 
     // N
-    {"ん", "ン", "n"},
+    {"ん", "ン", "n", "n"},
 
     // Small kana for combinations
-    {"ゃ", "ャ", "ya (small)"}, {"ゅ", "ュ", "yu (small)"}, {"ょ", "ョ", "yo (small)"},
-    {"ぁ", "ァ", "a (small)"}, {"ぃ", "ィ", "i (small)"}, {"ぅ", "ゥ", "u (small)"},
-    {"ぇ", "ェ", "e (small)"}, {"ぉ", "ォ", "o (small)"}, {"っ", "ッ", "tsu (small)"},
+    {"ゃ", "ャ", "ya (small)", "ya"}, {"ゅ", "ュ", "yu (small)", "yu"}, {"ょ", "ョ", "yo (small)", "yo"},
+    {"ぁ", "ァ", "a (small)", "a"}, {"ぃ", "ィ", "i (small)", "i"}, {"ぅ", "ゥ", "u (small)", "u"},
+    {"ぇ", "ェ", "e (small)", "e"}, {"ぉ", "ォ", "o (small)", "o"}, {"っ", "ッ", "tsu (small)", "tsu"},
 };
 
 // Time records
@@ -187,13 +188,13 @@ void startQuiz(Difficulty difficulty, const Modes &modes) {
         string input;
         getline(cin, input);
 
-        if (input == card.romaji) {
+        if (input == card.quizRomaji) {
             if (difficulty == BEGINNER || modes.review)
                 cout << "Correct!\n";
             correct++;
         } else {
             if (difficulty == BEGINNER || modes.review)
-                cout << "Wrong! Correct answer: " << card.romaji << "\n";
+                cout << "Wrong! Correct answer: " << card.quizRomaji << "\n";
         }
     }
 
@@ -226,26 +227,3 @@ void showTopTimes() {
         }
     }
 }
-
-
-// remove the small characters from the guesses KEEP them in he list
-// add gi ga go pi pe po esq characters 
-// certain answers were marked wrong when it was correct i is the apperent one may be mixed with small version
-// add a correct out of how many were questioned so that user can see at end
-// have the list of hira and kata displayed above menu when launched vs having an option to display them keep format if possible or clean it up some
-
-
-// the times are not saving if the program is closed
-// settings do not save if program is closed
-//is it possible to only change font size on the text of the question being asked so that user can see larger font of the hira and kata
-// add a reverse mode in option so that the romaji is displayed vs the symbol and the symbol needs to be entered
-
-// Expert difficulty so that you can have either on of the symbols displayed and the hira and kata are not displayed together, so that you can test the user on knowledge of all
-// add an option or mode to just have hira or kata displayed add a fail safe if bot options are on
-
-
-// add another library with words and have the user answer in romaji (pronunciations)
-// make different lists covering different topics such as colors animals and so forth
-
-
-// add score at the end of quiz and add option to go back and correct the wrong answers with an option lets call it correct the wrongs on/off
