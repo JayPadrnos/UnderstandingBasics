@@ -586,3 +586,15 @@ int main() {
 
 // Add a review wrong answers routine that re-asks incorrect cards until the user gets them right or ESCs.
 // Move the kana data to a .txt file so you can edit/expand without recompiling
+
+/*ESC universal exit from menus, quiz, and expert mode (no accidental lock-ins).
+
+Timer countdown fix for better accuracy.
+
+File reading loop safety (skips malformed lines, recreates missing files with defaults).
+
+Abbreviation comments under logic that uses shortened terms like idx or vec.
+
+Whitespace trimming so no weird inputs cause issues.
+
+Exception handling to prevent crashes mid-run.*/
