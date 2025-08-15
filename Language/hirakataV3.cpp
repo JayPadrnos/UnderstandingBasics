@@ -518,3 +518,7 @@ int main() {
 }
 
 // UTF-8 with esc from V2
+
+// does not work either still has bad hira kata symbols esc does not work on this one either
+
+// build off of V2 !!!

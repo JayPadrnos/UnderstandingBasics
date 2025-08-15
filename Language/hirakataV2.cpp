@@ -570,3 +570,12 @@ int main() {
 
     return 0;
 }
+
+
+// we need the UTF-8 to properly display hira and kata the esc still works on this version
+
+// intermediate difficulty does not say if your answers are correct or incorrect 
+// same issue in daily
+// take the logic for beginner to other functions or have it set as a setting so that any test will have it if turned on
+
+// 
