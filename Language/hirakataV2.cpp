@@ -519,10 +519,19 @@ void runQuiz(Difficulty diff, Modes& modes) {
 // ====== Main ======
 
 int main() {
+#ifdef _WIN32
+    // Make Windows console print UTF-8 kana correctly
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+    SetConsoleMode(GetStdHandle(STD_OUTPUT_HANDLE),
+                   ENABLE_PROCESSED_OUTPUT | ENABLE_WRAP_AT_EOL_OUTPUT);
+#endif
+
     srand(static_cast<unsigned int>(time(nullptr)));
     Modes modes;
     loadSettings(modes);
     loadTopTimes();
+
 
     while (true) {
         showMainMenu();
@@ -578,4 +587,23 @@ int main() {
 // same issue in daily
 // take the logic for beginner to other functions or have it set as a setting so that any test will have it if turned on
 
-// 
+// set up a checklist for daily completion, or rather checks for different study types on launch, 
+// different goals have a seed for random goal for the day 
+
+// make sure ro is displayed proper in katakana
+
+// top times are only saved with time mode on******
+
+
+// Add score with top times, this way not only time is displayed but score is as well, which means we have to prefer higher scores than faster time,
+// a time of 22 seconds with a score of 70% should not be ahead of a time of 27 seconds with a score of 100% as we value the correct answer over time,
+// even though it is a timed trial.
+
+// when REVERSE mode is ON you can only answer with katakana not hira we should try to allow for both answers to be correct, unless we hira or kata mode on, then 
+// we can have the input be specified in REVERSE along with the intentional function of only displaying that character when asked the question
+
+// specify in parenthesis if the time was in reverse mode for TOP TIMES // EXPERT as well
+// Unable to type with countdown TIMER MODE ON
+// the COUNTDOWN TIMER ON makes it so each question is timed, wanted a timer for full quiz unanswered questions marked wrong
+// How ever when questions and quizes get more intricate then We will user current settings, make a new mode for FULL QUIZ TIMER higher time setting capacity in minutes vs seconds
+
