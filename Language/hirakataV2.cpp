@@ -581,16 +581,16 @@ int main() {
 }
 
 
-// we need the UTF-8 to properly display hira and kata the esc still works on this version
+//- we need the UTF-8 to properly display hira and kata the esc still works on this version
 
-// intermediate difficulty does not say if your answers are correct or incorrect 
-// same issue in daily
-// take the logic for beginner to other functions or have it set as a setting so that any test will have it if turned on
+//- intermediate difficulty does not say if your answers are correct or incorrect 
+//- same issue in daily
+//- take the logic for beginner to other functions or have it set as a setting so that any test will have it if turned on
 
 // set up a checklist for daily completion, or rather checks for different study types on launch, 
 // different goals have a seed for random goal for the day 
 
-// make sure ro is displayed proper in katakana
+//- make sure ro is displayed proper in katakana
 
 // top times are only saved with time mode on******
 
@@ -606,4 +606,4 @@ int main() {
 // Unable to type with countdown TIMER MODE ON
 // the COUNTDOWN TIMER ON makes it so each question is timed, wanted a timer for full quiz unanswered questions marked wrong
 // How ever when questions and quizes get more intricate then We will user current settings, make a new mode for FULL QUIZ TIMER higher time setting capacity in minutes vs seconds
-
+//
