@@ -607,4 +607,4 @@ int main() {
 // the COUNTDOWN TIMER ON makes it so each question is timed, wanted a timer for full quiz unanswered questions marked wrong
 // How ever when questions and quizes get more intricate then We will user current settings, make a new mode for FULL QUIZ TIMER higher time setting capacity in minutes vs seconds
 //
-//
+// learn the next step in vectors for project
