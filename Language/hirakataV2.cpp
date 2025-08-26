@@ -608,3 +608,5 @@ int main() {
 // How ever when questions and quizes get more intricate then We will user current settings, make a new mode for FULL QUIZ TIMER higher time setting capacity in minutes vs seconds
 //
 // learn the next step in vectors for project
+
+// mouse hover for seeing romanji of kanji (except the kanji / hira kata that the word is for)
