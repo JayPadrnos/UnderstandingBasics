@@ -93,7 +93,7 @@ unordered_map<string, vector<double>> topTimes;
 
 // ====== Helper Functions ======
 string trimWhitespace(const string& s) {
-    size_t start = s.find_first_not_of(" \t\r\n");
+    size_t start = s.find_first_not_of(" \t\r\n"); // double check what /t /r /n are.
     if (start == string::npos) return "";
     size_t end = s.find_last_not_of(" \t\r\n");
     return s.substr(start,end-start+1);
@@ -116,7 +116,7 @@ pair<bool,string> readLineWithEsc() {
         int ch = _getch();
         if(ch==27) return {true,""};
         else if(ch=='\r'||ch=='\n'){cout<<'\n';return{false,out};}
-        else if(ch=='\b'||ch==127){if(!out.empty()){out.pop_back();cout<<"\b \b";}}
+        else if(ch=='\b'||ch==127){if(!out.empty()){out.pop_back();cout<<"\b \b";}}     // double check logic and /b along with what pop_back is
         else{out.push_back(static_cast<char>(ch));cout<<static_cast<char>(ch);}
     }
 }
@@ -125,7 +125,7 @@ bool countdownWaitWithEsc(int seconds) {
     using namespace chrono;
     auto start = high_resolution_clock::now();
     while(true){
-        if(_kbhit()){int c=_getch();if(c==27) return true;}
+        if(_kbhit()){int c=_getch();if(c==27) return true;}       // double check getch and kbhit also high_resolution_clock
         auto now=high_resolution_clock::now();
         double elapsed = duration_cast<duration<double>>(now-start).count();
         if(elapsed>=seconds) return false;
@@ -135,7 +135,7 @@ bool countdownWaitWithEsc(int seconds) {
 #else
 pair<bool,string> readLineWithEsc() {
     struct termios oldt,newt;
-    tcgetattr(STDIN_FILENO,&oldt);
+    tcgetattr(STDIN_FILENO,&oldt);      // THIS Entire BLOCK
     newt=oldt;
     newt.c_lflag&=~(ICANON|ECHO);
     tcsetattr(STDIN_FILENO,TCSANOW,&newt);
@@ -170,7 +170,7 @@ bool countdownWaitWithEsc(int seconds){
     newt.c_lflag&=~(ICANON|ECHO);
     tcsetattr(STDIN_FILENO,TCSANOW,&newt);
     auto start=high_resolution_clock::now();
-    bool escPressed=false;
+    bool escPressed=false;                          // ENTIRE BLOCK
     while(true){
         if(kbhit_posix()){
             char ch;
@@ -195,7 +195,7 @@ void loadSettings(Modes &modes) {
     int csec,qmode;
     if(in>>t>>r>>rev>>exp>>h>>k>>csec>>qmode){
         modes.timed=t; modes.review=r; modes.reverse=rev; modes.expert=exp;
-        modes.onlyHira=h; modes.onlyKata=k; modes.countdown=(csec>0);
+        modes.onlyHira=h; modes.onlyKata=k; modes.countdown=(csec>0);                   // ENTIRE BLOCK
         if(csec>0) modes.countdownSeconds=csec;
         if(qmode>=0 && qmode<=4) modes.quizMode = static_cast<QuizMode>(qmode);
     }
