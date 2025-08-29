@@ -405,3 +405,11 @@ int main(){
     }
     return 0;
 }
+
+
+// reorganize the kana list for user so it has spacers every 5 and or has the more voiced kana specified easier to not clutter list
+
+// have a bool on or off for seeing the missed answers at the end saying something like these are the ones you missed add the logic to review mode
+// have it say you missed and show the kana missed have it be able to show with or without the romanji 
+
+// it is time to add words, you should have 3 words per kana and do not overlap the words which means you will need over 200 words
