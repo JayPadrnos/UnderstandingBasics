@@ -34,7 +34,8 @@ struct Flashcard {
     string kanji;       
     string meaning;     
     string context;     
-    string category;    
+    string category;  
+      
 };
 
 enum Difficulty { BEGINNER, INTERMEDIATE, DAILY };
