@@ -391,3 +391,4 @@ int main(){
 // set up a SETTING to change the beginer and intermediate to words or kana
 
 // VIEW TOP TIMES not implimented yet
+// words like hashi only have one pitch check if that is correct for the word list
