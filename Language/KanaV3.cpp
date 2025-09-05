@@ -371,23 +371,3 @@ int main(){
     }
     return 0;
 }
-
-// Need to add the translated word next to the kana phrase in options mode
-// Create a new list for katakana words 
-
-// make an ALL VOCAB mode
-// make an ALL HIRA OR KATA mode (default will be HIRA)
-// Make a more difficult quiz like for letters where we can go 10 20 50 questions
-
-
-// make way for user to see the pitch tones help in the vocab list
-// clean up vocab list and letter list to be more appealing for users to see
-
-
-// Settings menu not implimented yet
-// Beginner quiz uses words not kana
-// intermediate uses words not kana
-// Daily users words not kana
-// set up a SETTING to change the beginer and intermediate to words or kana
-
-// VIEW TOP TIMES not implimented yet
