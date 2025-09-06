@@ -392,3 +392,4 @@ int main(){
 
 // VIEW TOP TIMES not implimented yet
 // words like hashi only have one pitch check if that is correct for the word list
+// word of day pick random word from list and give all info in organized display with menu
