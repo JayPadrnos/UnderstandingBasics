@@ -393,3 +393,14 @@ int main(){
 // VIEW TOP TIMES not implimented yet
 // words like hashi only have one pitch check if that is correct for the word list
 // word of day pick random word from list and give all info in organized display with menu
+
+// have 10 words at random displayed for menu
+// double check that the pitch is used properly for each version of the word
+// prefecture list of japan?
+// some form of note taking or rather cliff notes on the country and language?
+
+// prefectures, main cities, mountain/volcanos, flower/ tree, soba or udon ramen, 
+// each city needs these and look into lakes 
+// add in later as a full addition to the program as another category, also add sakura season for each prefecture,
+
+// formal phrases category
