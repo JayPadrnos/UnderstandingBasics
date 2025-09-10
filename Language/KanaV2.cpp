@@ -407,4 +407,4 @@ int main(){
 // sorting system for words.
 // Kanji words/ added to already formed words
 
-// 
+// on word quiz add what the word is so the user can see what the word translates to in english after getting it correct or incorrect
