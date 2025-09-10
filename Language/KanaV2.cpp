@@ -404,3 +404,7 @@ int main(){
 // add in later as a full addition to the program as another category, also add sakura season for each prefecture,
 
 // formal phrases category
+// sorting system for words.
+// Kanji words/ added to already formed words
+
+// 
