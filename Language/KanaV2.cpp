@@ -408,3 +408,5 @@ int main(){
 // Kanji words/ added to already formed words
 
 // on word quiz add what the word is so the user can see what the word translates to in english after getting it correct or incorrect
+
+// Dictionary as a different library of words with more intricate examples and descriptions of words be sure it is exact details of words

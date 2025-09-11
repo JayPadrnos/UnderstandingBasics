@@ -1,4 +1,4 @@
-// KanaV3.cpp
+
 // Unified Kana + Vocabulary Flashcard Program
 // Includes:
 // - Kana quizzes (with reverse, onlyHira/onlyKata, timed, hints, expert, countdown)
