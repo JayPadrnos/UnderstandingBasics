@@ -1,0 +1,20 @@
+project/
+│
+├── main.cpp
+
+├── menu.h
+├── menu.cpp
+
+├── library.h
+├── library.cpp
+
+├── quiz.h
+├── quiz.cpp
+
+├── numbergen.h
+└── numbergen.cpp
+
+Number Generator for multiple numbers to pull different words random word function(s)
+
+Add in the UTF-8 cpp and h for the kanji and kana to be displayed
+
