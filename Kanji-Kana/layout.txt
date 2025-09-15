@@ -20,3 +20,4 @@ Add in the UTF-8 cpp and h for the kanji and kana to be displayed
 
 Quiz needs to have the full info on word after romanji is answered for the given kana or kanji
 
+/
