@@ -40,3 +40,5 @@ void Library::displayWordOfTheDay() {
 const std::vector<WordEntry>& Library::getWords() const {
     return words;
 }
+
+
