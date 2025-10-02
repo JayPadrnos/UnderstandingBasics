@@ -2,4 +2,6 @@
 
 // figure out how to schedule a 5 day week on work and a 6th rest day that still exposes you to the content for project
 
-// 
+//  must set up git repo, by git may disable current repo
+
+//
